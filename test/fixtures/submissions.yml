@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  video_url: MyString
+  name: MyString
+  email: MyString
+  address: MyString
+  text: MyText
+  lat: 1.5
+  lng: 1.5
+  approved_at: 2010-03-10 13:06:18
+
+two:
+  video_url: MyString
+  name: MyString
+  email: MyString
+  address: MyString
+  text: MyText
+  lat: 1.5
+  lng: 1.5
+  approved_at: 2010-03-10 13:06:18

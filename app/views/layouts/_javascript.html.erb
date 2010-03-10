@@ -1,0 +1,21 @@
+<%= include_javascript_from_cdn :jquery %>
+<%= javascript_include_tag 'base', 'application' %>
+
+<% js_var :DEBUG, !Rails.env.production? %>
+<% js_var :authenticity_token, form_authenticity_token %>
+
+<%= yield :javascript %>
+
+<%- in_javascript = yield :in_javascript -%>
+<%- if in_javascript then -%>
+	<script type="text/javascript">
+	//<![CDATA[
+		<%= in_javascript %>
+	//]]>
+	</script>
+<% end %>
+
+<!--[if IE 6]>
+<%= javascript_include_tag 'DD_belatedPNG_0.0.8a-min.js' %>
+<%= javascript_tag "DD_belatedPNG.fix('.png_fix');" %>
+<![endif]-->

@@ -1,0 +1,15 @@
+<%= include_javascript_from_cdn :jquery %>
+<%= javascript_include_tag 'cmadmin' %>
+
+<% js_var :DEBUG, !Rails.env.production? %>
+<% js_var :authenticity_token, form_authenticity_token %>
+
+<%= yield :javascript %>
+
+<%- @content_for_in_javascript -%>
+	<script type="text/javascript">
+	//<![CDATA[
+		<%= yield :in_javascript %>
+	//]]>
+	</script>
+<% end %>

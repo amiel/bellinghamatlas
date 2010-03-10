@@ -1,0 +1,3 @@
+<%= form.input :email %>
+<%= form.input :password, :label => form.object.new_record? || I18n.t(:'formtastic.labels.admin.change_password'), :as => :password %>
+<%= form.input :password_confirmation %>

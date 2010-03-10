@@ -1,0 +1,12 @@
+<% title I18n.t(:'cm_admin.password_resets.new.title') %>
+<h1><%= I18n.t(:'cm_admin.password_resets.new.title') %></h1>
+
+<% semantic_form_for @admin, :url => cm_admin_password_resets_path do |form| %>
+	<% form.inputs :title => :forgot_password do %>
+		<%= form.input :email %>
+	<% end %>
+	
+	<% form.buttons do %>
+		<%= form.commit_button I18n.t(:'formtastic.actions.reset_password') %>
+	<% end %>
+<% end %>

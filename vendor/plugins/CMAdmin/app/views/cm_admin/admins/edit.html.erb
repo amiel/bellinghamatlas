@@ -1,0 +1,8 @@
+<% semantic_form_for @admin, :url => cm_admin_account_url do |f| %>
+  <%= render :partial => "form", :object => f %>
+  <% f.buttons do %>
+    <%= f.commit_button I18n.t(:'formtastic.actions.admin.edit') %>
+  <% end %>			      
+<% end %>
+
+<%= link_to "My Profile", cm_admin_account_path %>

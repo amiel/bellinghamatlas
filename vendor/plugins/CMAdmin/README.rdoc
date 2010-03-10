@@ -1,0 +1,20 @@
+== Carnes Media Admin plugin
+
+CMAdmin requires that you have spreadhead and authlogic installed.
+
+run this rake task to get images
+
+	rake cmadmin:sync
+
+Example
+=======
+
+Example goes here.
+
+== TODO
+
+* fix spreadhead show (it shows the admin layout but shouldn't)
+* fix spreadhead View link in admin (should go to /)
+
+
+Copyright (c) 2010 Carnes Media, released under the MIT license

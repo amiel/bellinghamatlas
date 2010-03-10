@@ -1,0 +1,53 @@
+en:
+  cm_admin:
+    navigation:
+      dashboard: Dashboard
+      account: My Account
+      accounts: Users
+    admin_sessions:
+      new:
+        reset_password: Reset Password
+    password_resets:
+      new:
+        title: Reset Password
+      edit:
+        title: ''
+  flashes:
+    cm_admin:
+      admin_sessions:
+        create:
+          notice: "Login successful!"
+        destroy:
+          notice: "Logout successful!"
+      admins:
+        must_be_logged_in: "You must be logged in to access this page"
+        must_be_logged_out: "You must be logged out to access this page"
+        create:
+          notice: "Account registered!"
+        update:
+          notice: "Account updated!"
+        destroy:
+          notice: "Account deleted!"
+      password_resets:
+        not_found: "We're sorry, but we could not locate your account"
+        create:
+          notice: "Instructions to reset your password have been emailed to you"
+          error: "No user was found with that email address"
+        update:
+          notice: "Password successfully updated"
+  formtastic:
+    titles:
+      forgot_password: Please fill in your email address.
+      reset_password: Please enter a new password.
+    labels:
+      admin:
+        change_password: Change Password
+    actions:
+      admin_session:
+        new: "Login"
+      admin:
+          new: "Register"
+          edit: "Update"
+      reset_password: Reset Password
+      update_password: Update Password
+      

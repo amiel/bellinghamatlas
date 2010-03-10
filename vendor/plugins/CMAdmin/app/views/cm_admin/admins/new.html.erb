@@ -1,0 +1,6 @@
+<% semantic_form_for @admin, :url => cm_admin_signup_path do |f| %>
+  <%= render :partial => "form", :object => f %>
+  <% f.buttons do %>
+    <%= f.commit_button I18n.t(:'formtastic.actions.admin.new') %>
+  <% end %>
+<% end %>

@@ -1,0 +1,7 @@
+will_paginate
+less
+paperclip
+authlogic
+justinfrench-formtastic --source=http://gems.github.com
+sprockets
+jeffrafter-spreadhead --source=http://gems.github.com

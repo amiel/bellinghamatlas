@@ -1,0 +1,30 @@
+@import "vendor/_reset";
+@import "vendor/_960_24";
+
+.js .hide{ display: none; }
+
+html{ background: #fff; font-family: "Helvetica Neue", Helvetica, Arial; font-weight: 300; }
+body{ }
+
+a{ color: #36c; }
+a:hover{ color: #c63;}
+
+td{ padding: 4px; border: 1px solid #eee; }
+
+#header{ padding: 20px 10px; background: #222; }
+#header h1#sitename a{ display: block; color: #fff; text-decoration: none; font-size: 1.6em; font-weight: 300; text-shadow: 0 -1px 0 #000; width: 960px; margin: 0 auto; }
+
+#nav{ background: #222; }
+#nav ul{ margin: 0 auto; width: 960px; overflow: hidden; }
+#nav li{ float: left; background: repeat-x center center url(/images/cmadmin/tab_off.png); margin-right: 2px; -moz-border-radius: 3px 3px 0 0; }
+	#nav li.current{ background-image: url(/images/cmadmin/tab_selected.png); }
+#nav li a{ display: block; padding: 8px 12px 8px 34px; color: #fff; text-decoration: none; background: no-repeat 12px center url(/images/cmadmin/icons/088.png); font-size: .8em; text-shadow: 0 -1px 0 #000; }
+	#nav li.current a{ color: #222; text-shadow: 0 1px 0 #ccc; }
+		
+	#nav #dashboard a{ background-image: url(/images/cmadmin/icons/016.png);}
+	#nav #pages a{ background-image: url(/images/cmadmin/icons/077.png);}
+	#nav #users a{ background-image: url(/images/cmadmin/icons/108.png);}
+	#nav #statistics a{ background-image: url(/images/cmadmin/icons/096.png);}			
+	#nav #account a{ background-image: url(/images/cmadmin/icons/107.png);}				
+	
+#main{ background: #fff; padding: 40px 0; clear: both; width: 960px; margin: 0 auto; } 

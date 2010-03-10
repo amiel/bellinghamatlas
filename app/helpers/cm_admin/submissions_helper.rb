@@ -1,0 +1,2 @@
+module CmAdmin::SubmissionsHelper
+end

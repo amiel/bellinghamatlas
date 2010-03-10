@@ -1,0 +1,21 @@
+<% semantic_form_for @submission do |f| %>
+  <% f.inputs :title => :you do %>
+    <%= f.input :name %>
+    <%= f.input :email %>
+  <% end %>
+  
+  <% f.inputs :title => :location, :id => 'location_latlng' do %>
+    <%= f.input :lat %>
+    <%= f.input :lng %>
+  <% end %>
+  
+  <% f.inputs :title => :location, :id => 'location_address' do %>
+    <%= f.input :address %>
+  <% end %>
+    
+  <% f.inputs do %>
+    <%= f.input :approved, :as => :boolean %>
+  <% end %>
+    
+  <%= f.buttons :commit %>
+<% end %>

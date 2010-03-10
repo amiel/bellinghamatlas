@@ -7,6 +7,14 @@ class Submission < ActiveRecord::Base
   def approve!
     update_attribute :approved_at, Time.current
   end
+  
+  def approved=(v)
+    approve! if ActiveRecord::ConnectionAdapters::Column.value_to_boolean v
+  end
+  
+  def approved
+    !!approved_at
+  end
 
   private
   def geocode_address

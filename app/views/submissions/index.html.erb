@@ -1,3 +1,7 @@
+<%= @map.div(:width => 600, :height => 400, :full => true) %>
+
 <% for submission in @submissions %>
-  <%= debug submission %>
+  <%= link_to_function submission.name, '' %>
 <% end %>
+
+

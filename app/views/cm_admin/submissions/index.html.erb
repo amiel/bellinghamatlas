@@ -1,0 +1,7 @@
+<ul>
+
+  <% for submission in @submissions %>
+    <%= link_to submission.name, edit_cm_admin_submission_path(submission) %>
+  <% end %>
+
+</ul>

@@ -4,6 +4,9 @@
 en:
   site_name: Bellinghamatlas
   slogan: One awesomely cool site
+  submissions:
+    new:
+      title: New Submission
   formtastic:
     titles:
       you: About You

@@ -22,8 +22,9 @@ class SubmissionsController < ::InheritedResources::Base
   private
   def setup_map
     @map = GMap.new('map')
-    @map.control_init(:large_map => true, :overview_map => true, :map_type => true)
-    @map.set_map_type_init(GMapType::G_HYBRID_MAP)
+    @map.control_init(:small_map => true)
+    @map.set_map_type_init(GMapType::G_PHYSICAL_MAP)
     @map.center_zoom_init([48.7597000,-122.4869000], 12)
+    
   end
 end

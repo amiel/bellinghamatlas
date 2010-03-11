@@ -1,3 +1,5 @@
 <%= title @submission.name %>
 
+<%= image_tag @submission.photo.url %>
+
 <%= @map.div(:width => 600, :height => 400, :full => true) %>

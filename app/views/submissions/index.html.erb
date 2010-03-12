@@ -1,8 +1,15 @@
+
+<div id="left">
+</div>
+
 <%= @map.div %>
 
-
-<% for submission in @submissions %>
-  <%= link_to_function submission.name, '' %>
-<% end %>
+<div id="right">
+	<ul id="submissions">
+		<% for submission in @submissions %>
+		  <li><%= link_to_function submission.name, '' %></li>
+		<% end %>
+	</ul>
+</div>
 
 

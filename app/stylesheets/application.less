@@ -5,9 +5,19 @@
 
 .js .js-hide{ display: none; }
 
-html, body, #main{ min-height: 100%; height: 100%; }
+html, body{ min-height: 100%; height: 100%; }
+#header{ height: 5%; overflow: hidden; }
+#main{ height: 90%; }
+#footer{ height: 5%; }
 
-#map{ min-height: 500px; min-width: 700px; height: 100%; width: 100%; }
+.column{ float: left; width: 10%; height: 100%; background: @background_color; }
+#left{ .column; }
+#map{ .column; width: 80%; }
+#right{ .column; }
+
+.box{ border: 1px solid #999; padding: 5px; background: #ccc; }
+
+#submissions{ .box; position: relative; left: -180px; top: 10px; width: 100px; }
 
 @import "vendor/_formtastic";
 @import "_formtastic_changes";

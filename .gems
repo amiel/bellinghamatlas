@@ -5,4 +5,7 @@ authlogic
 justinfrench-formtastic --source=http://gems.github.com
 sprockets
 jeffrafter-spreadhead --source=http://gems.github.com
+inherited_resources --version='1.0.3'
 geokit
+gravtastic --version='>= 2.1.0'
+

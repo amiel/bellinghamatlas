@@ -17,6 +17,7 @@ Rails::Initializer.run do |config|
 
   config.gem 'geokit'
   config.gem 'inherited_resources', :version => '1.0.3'
+  config.gem 'gravtastic', :version => '>= 2.1.0'
 
 
   config.time_zone = 'Pacific Time (US & Canada)'

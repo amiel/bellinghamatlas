@@ -1,4 +1,6 @@
 
+<% map_javascripts @map %>
+
 <div id="left">
 </div>
 
@@ -7,7 +9,7 @@
 <div id="right">
 	<ul id="submissions">
 		<% for submission in @submissions %>
-		  <li><%= link_to_function submission.name, '' %></li>
+		  <li><%= image_tag submission.gravatar_url(:size => 16) %> <%= link_to_function submission.name, '' %></li>
 		<% end %>
 	</ul>
 </div>

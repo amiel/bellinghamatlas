@@ -2,10 +2,6 @@ class SubmissionsController < ::InheritedResources::Base
   def index
     @submissions = Submission.approved
     setup_map
-
-    @submissions.each do |s|
-      @map.overlay_init(GMarker.new([s.lat, s.lng], :title => s.name, :info_window => "<h3>#{s.name}</h3><p>#{s.address}</p>"))
-    end
   end
 
   

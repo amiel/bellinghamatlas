@@ -2,7 +2,7 @@
 <%= sprockets_include_tag 'application' %>
 
 <% if @map then %>
-  <%= GMap.header %>
+  <%= GMap.header(:host => request.host_with_port) %>
   <%= @map.to_html %>
 <% end %>
 

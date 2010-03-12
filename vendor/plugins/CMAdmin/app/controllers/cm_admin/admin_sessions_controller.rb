@@ -11,7 +11,7 @@ module CMAdmin
       @admin_session = AdminSession.new(params[:admin_session])
       if @admin_session.save
         flash[:notice] = I18n.t(:'flashes.cm_admin.admin_sessions.create.notice')
-        redirect_back_or_default cm_admin_account_url
+        redirect_back_or_default cm_admin_dashboard_path
       else
         render :action => :new
       end
@@ -20,7 +20,7 @@ module CMAdmin
     def destroy
       current_admin_session.destroy
       flash[:notice] = I18n.t(:'flashes.cm_admin.admin_sessions.destroy.notice')
-      redirect_back_or_default cm_admin_login_url
+      redirect_back_or_default cm_admin_login_path
     end
   end
 end

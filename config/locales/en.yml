@@ -8,6 +8,8 @@ en:
     new:
       title: New Submission
   formtastic:
+    action:
+      approve: Approve this Submission
     titles:
       you: About You
       location: Location

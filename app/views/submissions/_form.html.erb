@@ -1,21 +1,16 @@
 
-<% semantic_form_for @submission do |f| %>
-  <% f.inputs do %>
-    <%= f.input :approved, :as => :hidden %>
-  <% end %>
-  
-  <% f.buttons do %>
-    <%= f.commit_button 'approve' %>
-  <% end %>
-  
-<% end %>
-
 <% semantic_form_for @submission, :html => { :multipart => true } do |f| %>
   <% f.inputs :title => :you do %>
     <%= f.input :name %>
     <%= f.input :email %>
   <% end %>
   
+
+	<ul class="candybar">
+		<li><a href="#" class="address">Address</a></li>
+		<li><a href="#" class="latlng">Lat/Lng</a></li>
+	</ul>
+
   <% f.inputs :title => :location, :id => 'location_latlng' do %>
     <%= f.input :lat, :required => true %>
     <%= f.input :lng, :required => true %>
@@ -24,6 +19,13 @@
   <% f.inputs :title => :location, :id => 'location_address' do %>
     <%= f.input :address, :required => true %>
   <% end %>
+
+
+	<ul class="candybar">
+		<li><a href="#" class="photo">Photo</a></li>
+		<li><a href="#" class="video">Video</a></li>
+		<li><a href="#" class="none">None</a></li>
+	</ul>
   
   <% f.inputs :title => :media, :id => 'media_photo' do %>
     <%= f.input :photo %>
@@ -32,6 +34,8 @@
   <% f.inputs :title => :media, :id => 'media_video' do %>
     <%= f.input :video_url %>
   <% end %>
+
+	<div id="media_none">&nbsp;</div>
   
   <% f.inputs :title => :text do %>
     <%= f.input :text %>
@@ -39,4 +43,3 @@
     
   <%= f.buttons :commit %>
 <% end %>
-

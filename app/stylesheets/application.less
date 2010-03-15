@@ -14,6 +14,9 @@ h1{ font: 2em 'NeoRetroDrawRegular'; }
 h2{ margin-bottom: 20px; font: 1.4em 'NeoRetroDrawRegular'; } 
 .tagline{ padding: 20px 0; font: 1em 'NeoRetroFillRegular'; color: #999; }
 
+a{ color: #069; text-decoration: none; }
+	a:hover{ color: #960; }
+
 .container{ margin: 0 auto; width: 960px; }
 .column{ float: left; width: 10%; height: 100%; background: @background_color; }
 #left{ .column; }
@@ -29,6 +32,8 @@ h2{ margin-bottom: 20px; font: 1.4em 'NeoRetroDrawRegular'; }
 		a{ display: none; height: 150px; display: block; text-indent: -999em; }
 	}
 }
+
+#footer .container{ font-size: .8em; clear: both; border-top: 1px dotted #ccc; padding: 20px; }
 
 form.formtastic{
 	legend{ margin-bottom: 10px; font-style: italic; color: #666; }
@@ -68,7 +73,7 @@ form.formtastic{
 		}
 	}
 	
-	.selected a{ font-style: italic; color: #fff; background: #999 repeat-x center center url(/images/gradient.png); text-shadow: 0 1px 0 #000; border-color: #333; }
+	a.current{ font-style: italic; color: #fff; background: #aaa repeat-x center center url(/images/gradient.png); text-shadow: 0 1px 0 #000; border-color: #999; }
 	.first a{ -webkit-border-top-left-radius: 3px; -webkit-border-bottom-left-radius: 3px;	-moz-border-radius-topleft: 3px;	-moz-border-radius-bottomleft: 3px;	border-top-left-radius: 3px;	border-bottom-left-radius: 3px; }
 	.last a{ border-right-width: 1px; -webkit-border-top-right-radius: 3px;	-webkit-border-bottom-right-radius: 3px;	-moz-border-radius-topright: 3px;	-moz-border-radius-bottomright: 3px;	border-top-right-radius: 3px;	border-bottom-right-radius: 3px;}
 }

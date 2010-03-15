@@ -1,7 +1,6 @@
-<%= title %>
+<div class="container">
+<%= title "Thanks for your submission!" %>
 
-Thanks <%= @submission.name %> for your submission.
-
-If you made a mistake, don't worry, you can still <%= link_to 'edit it', edit_submission_path(@submission) %>
-
+<p>If you made a mistake don't worry: you can still <%= link_to 'edit it', edit_submission_path(@submission) %>.</p>
+</div>
 <!-- <%= session[:submission_ids].inspect %> -->

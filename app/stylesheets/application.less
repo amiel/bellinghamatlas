@@ -5,11 +5,14 @@
 
 .js .js-hide{ display: none; }
 
-html, body{ min-height: 100%; height: 100%; }
-#header{ height: 5%; overflow: hidden; }
+html, body{ min-height: 100%; height: 100%; background: #f0f0f0; color: #333; font-family: Garamond, "Hoefler Text", "Times New Roman", Times, serif; text-shadow: 0 1px 0 #fff; }
+/*#header{ height: 5%; overflow: hidden; }*/
 #main{ height: 90%; }
 #footer{ height: 5%; }
 
+h2{ margin-bottom: 20px; }
+
+.container{ margin: 0 auto; width: 960px; }
 .column{ float: left; width: 10%; height: 100%; background: @background_color; }
 #left{ .column; }
 #map{ .column; width: 80%; }
@@ -19,5 +22,39 @@ html, body{ min-height: 100%; height: 100%; }
 
 #submissions{ .box; position: relative; left: -180px; top: 10px; width: 140px; }
 
-@import "vendor/_formtastic";
-@import "_formtastic_changes";
+#header{ background: no-repeat center top url(/images/header.png); height: 150px; margin-bottom: 20px; 
+	h1{ .container; 
+		a{ display: none; height: 150px; display: block; text-indent: -999em; }
+	}
+}
+
+form.formtastic{
+	legend{ margin-bottom: 10px; font-style: italic; color: #666; }
+	li{ margin-bottom: 1em; }
+	label{ display: block; font-size: .9em; float: none; margin-bottom: 2px; font-variant: small-caps; }
+	.string input, textarea{ border: 1px solid #ccc; border-color: #ccc #ccc #aaa #aaa; -moz-border-radius: 3px; -webkit-border-radius: 3px; padding: 3px; width: 98%; float: none; margin-top: 0; font: 1em Garamond, "Hoefler Text", "Times New Roman", Times, serif; color: #333; 
+		:focus{ outline: 3px solid #ddd; box-shadow: 0 0 10px #ccc; }
+	}
+	textarea{ height: 6em; }
+	p.inline-hints{ color: #999; font-size: .8em; margin: 2px; font-style: italic; }
+	fieldset{ margin-bottom: 1em; border-bottom: 1px dotted #ccc; }
+}
+
+.two_column{
+	.left{ float: left; width: 540px; }
+	.right{ float: left; width: 339px; margin-left: 40px; padding-left: 40px; border-left: 1px dotted #ccc; }
+	.masthead{ text-align: center; margin-bottom: 40px; font-size: 1.3em; }
+}
+
+.candybar{
+	margin: 0; padding: 0; overflow: hidden; 
+	li{ float: left; 
+		a{ display: block; text-decoration: none; color: #333; font-size: .8em; background: #ddd; padding: 5px 10px; border: 1px solid #ccc; border-right-width: 0; border-color: #ccc #ccc #aaa #aaa; 
+			:hover{ color: #fff; background: #666; text-shadow: 0 1px 0 #000; border-color: #333; }
+		}
+	}
+	
+	.selected a{ font-style: italic; color: #fff; background: #999; text-shadow: 0 1px 0 #000; border-color: #333; }
+	.first a{ -webkit-border-top-left-radius: 3px; -webkit-border-bottom-left-radius: 3px;	-moz-border-radius-topleft: 3px;	-moz-border-radius-bottomleft: 3px;	border-top-left-radius: 3px;	border-bottom-left-radius: 3px; }
+	.last a{ border-right-width: 1px; -webkit-border-top-right-radius: 3px;	-webkit-border-bottom-right-radius: 3px;	-moz-border-radius-topright: 3px;	-moz-border-radius-bottomright: 3px;	border-top-right-radius: 3px;	border-bottom-right-radius: 3px;}
+}

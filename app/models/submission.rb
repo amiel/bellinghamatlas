@@ -4,7 +4,7 @@ class Submission < ActiveRecord::Base
   before_validation_on_create :geocode_address
   
   validates_presence_of :name
-  validates_presence_of :text
+  #validates_presence_of :text
   
   has_attached_file :photo, {
     :styles => {

@@ -2,22 +2,27 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  site_name: Bellinghamatlas
-  slogan: One awesomely cool site
+  site_name: Bellingham Atlas
+  slogan: An Interactive Look at the City of Subdued Excitement
   submissions:
     new:
       title: New Submission
   formtastic:
     titles:
-      you: About You
-      location: Location
+      you: Tell us about yourself.
+      location: Where was this photo or video taken?
     labels:
       submission:
         video_url: Video URL
+        text: "A brief description of the lovliness that is your submission, if you please."
+        name: Your Name
+        lat: Latitude
+        lng: Longitude
     hints:
       submission:
-        email: "for gravatar, will not give to anyone else. link to privs?"
-        video_url: Put a youtube url here.
+        email: "Will not be displayed."
+        video_url: Paste the URL to your YouTube video here
+        address: "Assumes Bellingham. ex.: 1031 N State St"
   activerecord:
     errors:
       geocode: Could not geocode that address. Please provide lat/lng

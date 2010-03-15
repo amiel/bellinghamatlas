@@ -1,6 +1,7 @@
 class SubmissionsController < ::InheritedResources::Base
+  
   before_filter :need_submissions_session, :except => :index
-  before_filter :require_previous_user, :only => [:show, :edit, :update]
+  before_filter :require_submission_from_current_session, :only => [:show, :edit, :update]
   
   def index
     @submissions = Submission.approved
@@ -11,6 +12,15 @@ class SubmissionsController < ::InheritedResources::Base
     @submission = Submission.find params[:id]
     setup_map
     @map.overlay_init(GMarker.new([@submission.lat, @submission.lng], :title => @submission.name))
+  end
+  
+  def create
+    create! do
+      if @submission.errors.empty? then
+        session[:submission_ids] << @submission.id
+      end
+      @submission
+    end
   end
 
 

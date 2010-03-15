@@ -1,0 +1,11 @@
+@font-face {
+	font-family: 'NeoRetroDrawRegular';
+	src: url('/fonts/NEORD___.eot');
+	src: local('NeoRetroDraw'), local('NeoRetroDraw'), url('/fonts/NEORD___.woff') format('woff'), url('/fonts/NEORD___.ttf') format('truetype'), url('/fonts/NEORD___.svg#NeoRetroDraw') format('svg');
+}
+
+@font-face {
+	font-family: 'NeoRetroFillRegular';
+	src: url('/fonts/NEORF___.eot');
+	src: local('NeoRetroFill'), local('NeoRetroFill'), url('/fonts/NEORF___.woff') format('woff'), url('/fonts/NEORF___.ttf') format('truetype'), url('/fonts/NEORF___.svg#NeoRetroFill') format('svg');
+}

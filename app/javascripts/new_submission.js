@@ -3,7 +3,7 @@
 $(document).ready(function() {
 
 	function show_hide(to_show, to_hide) {
-		$(to_hide).slideUp(function(){
+		$(to_hide).filter(':visible').slideUp(function(){
 		    $(to_show).slideDown();
 		});
 	}

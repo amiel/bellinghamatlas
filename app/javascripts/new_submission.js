@@ -3,8 +3,9 @@
 $(document).ready(function() {
 
 	function show_hide(to_show, to_hide) {
-		$(to_hide).slideUp();
-		$(to_show).stop().slideDown();
+		$(to_hide).slideUp(function(){
+		    $(to_show).slideDown();
+		});
 	}
 		
 	$('.candybar').as_scope(function($) {

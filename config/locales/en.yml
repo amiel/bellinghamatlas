@@ -5,16 +5,16 @@ en:
   site_name: Bellingham Atlas
   slogan: An Interactive Look at the City of Subdued Excitement
   submissions:
-    new:
-      title: New Submission
+    form:
+      title: Get involved and help bring Google Fiber to Bellingham.
     show:
-      title: "Thanks, foobar"
+      title: "Thanks!"
   formtastic:
     actions:
       approve: Approve this Submission
       submission:
-        create: WOOT
-        update: BAR BAR
+        create: Submit My Entry
+        update: Update My Entry
     titles:
       you: Tell us about yourself.
       location: Where was this photo or video taken?

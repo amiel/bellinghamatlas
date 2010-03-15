@@ -10,8 +10,11 @@ en:
     show:
       title: "Thanks, foobar"
   formtastic:
-    action:
+    actions:
       approve: Approve this Submission
+      submission:
+        create: WOOT
+        update: BAR BAR
     titles:
       you: Tell us about yourself.
       location: Where was this photo or video taken?

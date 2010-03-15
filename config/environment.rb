@@ -9,7 +9,7 @@ require File.join(File.dirname(__FILE__), 'boot')
 Rails::Initializer.run do |config|
   config.gem 'jeffrafter-spreadhead', :lib => 'spreadhead', :source => 'http://gems.github.com'
   config.gem 'sprockets'
-  config.gem 'justinfrench-formtastic', :lib => 'formtastic', :source => 'http://gems.github.com'
+  config.gem 'formtastic'
   config.gem 'authlogic'
   config.gem 'paperclip'
   config.gem 'less'

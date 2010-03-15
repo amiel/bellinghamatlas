@@ -1,12 +1,13 @@
 class Submission < ActiveRecord::Base
   acts_as_mappable
   is_gravtastic!
-  before_validation_on_create :geocode_address
+  before_validation :geocode_address
   
   validates_presence_of :name
   #validates_presence_of :text
   
   has_attached_file :photo, {
+    :default_style => :small,
     :styles => {
       :icon => '32x32#',
       :thumb => '64x64#',
@@ -39,12 +40,13 @@ class Submission < ActiveRecord::Base
 
   private
   def geocode_address
+    if self.address_changed? then
+      self.address = "#{self.address} Bellingham, WA"
     
-    self.address = "#{self.address} Bellingham, WA"
-    
-    geo = Geokit::Geocoders::MultiGeocoder.geocode(address)
-    self.lat, self.lng = geo.lat, geo.lng if geo.success
+      geo = Geokit::Geocoders::MultiGeocoder.geocode(address)
+      self.lat, self.lng = geo.lat, geo.lng if geo.success
 
-    errors.add(:address, I18n.t(:'activerecord.errors.geocode')) if lat.blank? or lng.blank?
+      errors.add(:address, I18n.t(:'activerecord.errors.geocode')) if lat.blank? or lng.blank?
+    end
   end
 end

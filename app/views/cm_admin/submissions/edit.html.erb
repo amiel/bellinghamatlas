@@ -1,3 +1,15 @@
+
+<% semantic_form_for @submission do |f| %>
+  <% f.inputs do %>
+    <%= f.input :approved, :as => :hidden %>
+  <% end %>
+  
+  <% f.buttons do %>
+    <%= f.commit_button 'approve' %>
+  <% end %>
+  
+<% end %>
+
 <% semantic_form_for @submission, :html => { :multipart => true } do |f| %>
   <% f.inputs :title => :you do %>
     <%= f.input :name %>
@@ -27,3 +39,4 @@
     
   <%= f.buttons :commit %>
 <% end %>
+

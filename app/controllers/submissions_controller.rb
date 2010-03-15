@@ -1,18 +1,31 @@
 class SubmissionsController < ::InheritedResources::Base
+  before_filter :need_submissions_session, :except => :index
+  before_filter :require_previous_user, :only => [:show, :edit, :update]
+  
   def index
     @submissions = Submission.approved
     setup_map
   end
-
   
   def show
     @submission = Submission.find params[:id]
     setup_map
-    @map.overlay_init(GMarker.new([@submission.lat, @submission.lng], :title => @submission.name, :info_window => "<h3>#{@submission.name}</h3><p>#{@submission.address}</p>"))
+    @map.overlay_init(GMarker.new([@submission.lat, @submission.lng], :title => @submission.name))
   end
 
 
   private
+  def need_submissions_session
+    session[:submissions] ||= []
+    @saved_submissions = Submission.find session[:submissions]
+  rescue ActiveRecord::RecordNotFound => e
+    session[:submissions] = @saved_submissions = []
+  end
+  
+  def require_submission_from_current_session
+    redirect_to root_path unless session[:submissions].include?(params[:id].to_i)
+  end
+  
   def setup_map
     @map = GMap.new('map')
     # @map.control_init(:small_map => true)

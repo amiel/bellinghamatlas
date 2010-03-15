@@ -1,57 +1,5 @@
 <div class="container two_column">
 <% javascript 'new_submission' %>
-<div class="masthead">
-  <%= title "Get involved in Bellingham's bid for Google Fiber." %>
-  <div class="tagline">All you need is a few minutes, a printer, and a digital camera.</div>
-</div>
-<div class="left">
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-</div>
-<div class="right">
-  <h2>Submit An Entry</h2>
-<% semantic_form_for @submission, :html => { :multipart => true } do |f| %>
-  <% f.inputs :title => :you do %>
-    <%= f.input :name %>
-    <%= f.input :email %>
-  <% end %>
-  
 
-	<ul class="candybar">
-		<li class="first"><a href="#" class="address">Address</a></li>
-		<li class="last"><a href="#" class="latlng">Lat/Long</a></li>
-	</ul>
-
-  <% f.inputs :title => :location, :id => 'location_latlng' do %>
-    <%= f.input :lat, :required => true %>
-    <%= f.input :lng, :required => true %>
-  <% end %>
-  
-  <% f.inputs :title => :location, :id => 'location_address' do %>
-    <%= f.input :address, :required => true %>
-  <% end %>
-
-
-	<ul class="candybar">
-		<li class="first"><a href="#" class="photo">Photo</a></li>
-		<li><a href="#" class="video">Video</a></li>
-		<li class="last"><a href="#" class="none">None</a></li>
-	</ul>
-  
-  <% f.inputs :title => :media, :id => 'media_photo' do %>
-    <%= f.input :photo %>
-  <% end %>
-  
-  <% f.inputs :title => :media, :id => 'media_video' do %>
-    <%= f.input :video_url %>
-  <% end %>
-
-	<div id="media_none">&nbsp;</div>
-  
-  <% f.inputs :title => :text do %>
-    <%= f.input :text %>
-  <% end %>
-    
-  <%= f.buttons :commit %>
-<% end %>
-</div>
+<%= render 'form' %>
 </div>

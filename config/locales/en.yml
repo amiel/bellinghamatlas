@@ -8,6 +8,8 @@ en:
     new:
       title: New Submission
   formtastic:
+    action:
+      approve: Approve this Submission
     titles:
       you: Tell us about yourself.
       location: Where was this photo or video taken?

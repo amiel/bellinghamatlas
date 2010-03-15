@@ -2,20 +2,18 @@
 
 $(document).ready(function() {
 
-	function candybar(to_show, to_hide) {
+	function show_hide(to_show, to_hide) {
 		$(to_show).slideDown();
 		$(to_hide).slideUp();
 		return false;
 	}
 		
 	$('.candybar').as_scope(function($) {	
-		$('.address').click(function(){ return candybar('#location_address', '#location_latlng'); }).click();
-		$('.latlng').click(function(){  return candybar('#location_latlng',  '#location_address'); });
+		$('.address').click(function(){ return show_hide('#location_address', '#location_latlng'); }).click();
+		$('.latlng').click(function(){  return show_hide('#location_latlng',  '#location_address'); });
 		
-		$('.photo').click(function(){ return candybar('#media_photo', '#media_video, #media_none'); }).click();
-		$('.video').click(function(){ return candybar('#media_video', '#media_photo, #media_none'); });
-		$('.none').click(function(){  return candybar('#media_none',  '#media_photo, #media_video'); });
-		
-		
+		$('.photo').click(function(){ return show_hide('#media_photo', '#media_video, #media_none'); }).click();
+		$('.video').click(function(){ return show_hide('#media_video', '#media_photo, #media_none'); });
+		$('.none').click(function(){  return show_hide('#media_none',  '#media_photo, #media_video'); });
 	});
 });

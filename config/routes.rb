@@ -6,6 +6,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :submissions
   end
 
-  map.root :controller => 'submissions'
+  # map.root :controller => 'submissions' # this will be the root
+  map.root :controller => 'submissions', :action => 'new'
 
 end

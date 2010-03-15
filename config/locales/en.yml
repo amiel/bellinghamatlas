@@ -11,9 +11,13 @@ en:
     titles:
       you: About You
       location: Location
+    labels:
+      submission:
+        video_url: Video URL
     hints:
-      submissions:
+      submission:
         email: "for gravatar, will not give to anyone else. link to privs?"
+        video_url: Put a youtube url here.
   activerecord:
     errors:
       geocode: Could not geocode that address. Please provide lat/lng

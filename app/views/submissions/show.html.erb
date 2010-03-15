@@ -1,5 +1,7 @@
-<%= title @submission.name %>
+<%= title %>
 
-<%= image_tag @submission.photo.url %>
+Thanks <%= @submission.name %> for your submission.
 
-<%= @map.div(:width => 600, :height => 400, :full => true) %>
+If you made a mistake, don't worry, you can still <%= link_to 'edit it', edit_submission_path(@submission) %>
+
+<!-- <%= session[:submission_ids].inspect %> -->

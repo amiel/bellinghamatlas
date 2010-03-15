@@ -1,6 +1,7 @@
 class SubmissionsController < ::InheritedResources::Base
+  
   before_filter :need_submissions_session, :except => :index
-  before_filter :require_previous_user, :only => [:show, :edit, :update]
+  before_filter :require_submission_from_current_session, :only => [:show, :edit, :update]
   
   def index
     @submissions = Submission.approved
@@ -12,18 +13,27 @@ class SubmissionsController < ::InheritedResources::Base
     setup_map
     @map.overlay_init(GMarker.new([@submission.lat, @submission.lng], :title => @submission.name))
   end
+  
+  def create
+    create! do
+      if @submission.errors.empty? then
+        session[:submission_ids] << @submission.id
+      end
+      @submission
+    end
+  end
 
 
   private
   def need_submissions_session
-    session[:submissions] ||= []
-    @saved_submissions = Submission.find session[:submissions]
+    session[:submission_ids] ||= []
+    @saved_submissions = Submission.find session[:submission_ids]
   rescue ActiveRecord::RecordNotFound => e
-    session[:submissions] = @saved_submissions = []
+    session[:submission_ids] = @saved_submissions = []
   end
   
   def require_submission_from_current_session
-    redirect_to root_path unless session[:submissions].include?(params[:id].to_i)
+    redirect_to root_path unless session[:submission_ids].include?(params[:id].to_i)
   end
   
   def setup_map

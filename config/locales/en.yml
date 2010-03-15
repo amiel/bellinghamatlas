@@ -13,7 +13,7 @@ en:
     titles:
       you: Tell us about yourself.
       location: Where was this photo or video taken?
-      media: something cool
+      media: Mind uploading your photo<br/>or giving us a link to your video?
     labels:
       submission:
         video_url: Video URL

@@ -39,11 +39,23 @@ form.formtastic{
 	}
 	textarea{ height: 6em; }
 	p.inline-hints{ color: #999; font-size: .8em; margin: 2px; font-style: italic; }
-	fieldset{ margin-bottom: 1em; border-bottom: 1px dotted #ccc; }
+	fieldset{ margin-bottom: 1em; border-bottom: 1px dotted #ccc; 
+		fieldset{ border-bottom: 0; margin-bottom: 0; }
+	}
+	fieldset.buttons{ border-bottom: 0; 
+		input{ background: #aaa repeat-x center center url(/images/gradient.png); padding: 6px 12px; border: 1px solid #888; color: #fff; text-shadow: 0 -1px 0 rgba(0,0,0,.3); outline: 0; cursor: pointer; -moz-border-radius: 5px; -webkit-border-radius: 5px; 
+			:hover{ background-color: #3a3; border-color: #292; }
+		}
+	}
+	
 }
 
 .two_column{
-	.left{ float: left; width: 540px; }
+	.left{ float: left; width: 540px; 
+		/* hacky css for now */
+		h2{ margin-bottom: 10px; }
+		p{ margin-bottom: 1em; line-height: 125%; font-size: .9em; }
+	}
 	.right{ float: left; width: 339px; margin-left: 40px; padding-left: 40px; border-left: 1px dotted #ccc; }
 	.masthead{ text-align: center; margin-bottom: 40px; font-size: 1.3em; }
 }
@@ -51,12 +63,12 @@ form.formtastic{
 .candybar{
 	margin: 0; padding: 0; overflow: hidden; 
 	li{ float: left; 
-		a{ display: block; text-decoration: none; color: #333; font-size: .8em; background: #ddd; padding: 5px 10px; border: 1px solid #ccc; border-right-width: 0; border-color: #ccc #ccc #aaa #aaa; 
-			:hover{ color: #fff; background: #666; text-shadow: 0 1px 0 #000; border-color: #333; }
+		a{ display: block; text-decoration: none; color: #333; font-size: .8em; background: #ddd repeat-x center center url(/images/gradient.png); padding: 5px 10px; border: 1px solid #ccc; border-right-width: 0; border-color: #ccc #ccc #aaa #aaa; 
+			:hover{ color: #fff; background: #666 repeat-x center center url(/images/gradient.png); text-shadow: 0 1px 0 #000; border-color: #333; }
 		}
 	}
 	
-	.selected a{ font-style: italic; color: #fff; background: #999; text-shadow: 0 1px 0 #000; border-color: #333; }
+	.selected a{ font-style: italic; color: #fff; background: #999 repeat-x center center url(/images/gradient.png); text-shadow: 0 1px 0 #000; border-color: #333; }
 	.first a{ -webkit-border-top-left-radius: 3px; -webkit-border-bottom-left-radius: 3px;	-moz-border-radius-topleft: 3px;	-moz-border-radius-bottomleft: 3px;	border-top-left-radius: 3px;	border-bottom-left-radius: 3px; }
 	.last a{ border-right-width: 1px; -webkit-border-top-right-radius: 3px;	-webkit-border-bottom-right-radius: 3px;	-moz-border-radius-topright: 3px;	-moz-border-radius-bottomright: 3px;	border-top-right-radius: 3px;	border-bottom-right-radius: 3px;}
 }

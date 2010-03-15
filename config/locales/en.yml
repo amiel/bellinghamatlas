@@ -7,6 +7,8 @@ en:
   submissions:
     new:
       title: New Submission
+    show:
+      title: "Thanks, foobar"
   formtastic:
     action:
       approve: Approve this Submission

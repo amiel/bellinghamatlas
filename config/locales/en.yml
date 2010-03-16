@@ -12,6 +12,7 @@ en:
   formtastic:
     actions:
       approve: Approve this Submission
+      unapprove: Un-approve this Submission
       submission:
         create: Submit My Entry
         update: Update My Entry
@@ -31,6 +32,8 @@ en:
         email: "Will not be displayed."
         video_url: Paste the URL to your YouTube video here
         address: "Assumes Bellingham. ex.: 1031 N State St"
+        lat: "ex.: 48.74617"
+        lng: "ex.: -122.481017"
   activerecord:
     errors:
       geocode: Could not geocode that address. Please provide lat/lng

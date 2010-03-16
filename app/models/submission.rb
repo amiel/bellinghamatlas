@@ -4,7 +4,6 @@ class Submission < ActiveRecord::Base
   before_validation :geocode_address
   
   validates_presence_of :name
-  #validates_presence_of :text
   
   has_attached_file :photo, {
     :default_style => :small,
@@ -22,6 +21,21 @@ class Submission < ActiveRecord::Base
   named_scope :approved, :conditions => 'approved_at IS NOT NULL'
   named_scope :unapproved, :conditions => 'approved_at IS NULL'
 
+  def video?
+    !!video_url
+  end
+  
+  def youtube_video_id
+    @youtube_video_id = begin
+      matches = self.video_url.match(/youtube\.com\/watch.v=(\w+)/)
+      matches[1] unless matches.nil?
+    end unless defined? @youtube_video_id
+  end
+
+  def youtube?
+    !!youtube_video_id
+  end
+
   def approve!
     update_attribute :approved_at, Time.current
   end
@@ -37,6 +51,7 @@ class Submission < ActiveRecord::Base
   def approved
     !!approved_at
   end
+  alias_method :approved?, :approved
 
   private
   def geocode_address

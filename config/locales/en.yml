@@ -12,6 +12,7 @@ en:
   formtastic:
     actions:
       approve: Approve this Submission
+      unapprove: Un-approve this Submission
       submission:
         create: Submit My Entry
         update: Update My Entry

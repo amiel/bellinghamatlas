@@ -51,6 +51,7 @@ class Submission < ActiveRecord::Base
   def approved
     !!approved_at
   end
+  alias_method :approved?, :approved
 
   private
   def geocode_address

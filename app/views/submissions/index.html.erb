@@ -6,9 +6,14 @@
 <%= @map.div %>
 
 <div id="right">
+  <div id="featured_submission">
+    <span class="media"><%= media_for @featured_submission, :thumb %></span>
+    <%= @featured_submission.name %>
+  </div>
+  
 	<ul id="submissions">
 		<% for submission in @submissions %>
-		  <li><%= image_tag submission.gravatar_url(:size => 16) %> <%= link_to_function submission.name, '' %></li>
+		  <li><%= media_for submission %> <%= link_to_function submission.name, '' %></li>
 		<% end %>
 	</ul>
 </div>

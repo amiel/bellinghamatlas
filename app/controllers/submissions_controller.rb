@@ -5,6 +5,7 @@ class SubmissionsController < ::InheritedResources::Base
   
   def index
     @submissions = Submission.approved
+    @featured_submission = Submission.featured
     setup_map
   end
   

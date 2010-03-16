@@ -5,12 +5,18 @@ class Submission < ActiveRecord::Base
   
   validates_presence_of :name
   
+  def self.featured
+    find 10
+  end
+
+  
   has_attached_file :photo, {
     :default_style => :small,
     :styles => {
-      :icon => '32x32#',
-      :thumb => '64x64#',
-      :small => '120x80>',
+      :icon => '43x43#',
+      :thumb => '90x67#',
+      :medium_cropped => '272x163#',
+      :medium => '272x163>',
     },
     :storage => :s3,
     :s3_credentials => { :access_key_id => ENV['S3_ACCESS_KEY_ID'], :secret_access_key => ENV['S3_SECRET_ACCESS_KEY'] },
@@ -21,15 +27,20 @@ class Submission < ActiveRecord::Base
   named_scope :approved, :conditions => 'approved_at IS NOT NULL'
   named_scope :unapproved, :conditions => 'approved_at IS NULL'
 
+  def media_type
+    photo? ? :photo : youtube? ? :video : :none
+  end
+
   def video?
-    !!video_url
+    !video_url.blank?
   end
   
   def youtube_video_id
+    return @youtube_video_id if defined? @youtube_video_id
     @youtube_video_id = begin
-      matches = self.video_url.match(/youtube\.com\/watch.v=(\w+)/)
+      matches = video_url.match(/youtube\.com\/watch.v=(\w+)/) if video_url
       matches[1] unless matches.nil?
-    end unless defined? @youtube_video_id
+    end
   end
 
   def youtube?

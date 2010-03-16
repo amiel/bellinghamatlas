@@ -7,6 +7,10 @@ class SubmissionTest < ActiveSupport::TestCase
     
     should_validate_presence_of :name
     
+    should 'respond none for media_type' do
+      assert_equal :none, @submission.media_type
+    end
+    
     should 'geocode the address' do
       @submission.address = '104 State st'
       assert @submission.save, 'expected save'
@@ -39,6 +43,26 @@ class SubmissionTest < ActiveSupport::TestCase
       end
     end
     
+    context 'with a fake photo' do
+      setup { @submission.stubs(:photo?).returns(true) }
+      
+      should 'respond with true for photo?' do
+        assert @submission.photo?
+      end
+      
+      should 'respond with photo for media_type' do
+        assert_equal :photo, @submission.media_type
+      end
+    end
+    
+    context 'with a blank video_url' do
+      setup { @submission.update_attribute :video_url, '' }
+      
+      should 'return false for video?' do
+        assert !@submission.video?
+      end
+    end
+    
     context 'with an address that already ends with bellingham' do
       setup { @submission.update_attributes :address => '104 State st, Bellingham, WA' } # carnes media
       
@@ -49,6 +73,10 @@ class SubmissionTest < ActiveSupport::TestCase
     
     context 'with a youtube video' do
       setup { @submission.update_attribute :video_url, 'http://www.youtube.com/watch?v=jv04EdNJxKM' }
+      
+      should 'return video for media_type' do
+        assert_equal :video, @submission.media_type
+      end
       
       should 'return true for video?' do
         assert @submission.video?
@@ -61,6 +89,11 @@ class SubmissionTest < ActiveSupport::TestCase
       should 'return the youtube_video_id' do
         assert_equal 'jv04EdNJxKM', @submission.youtube_video_id
       end
+      
+      should 'return the youtube_video_id on the second call' do
+        assert_equal 'jv04EdNJxKM', @submission.youtube_video_id, 'expceted first call to work'
+        assert_equal 'jv04EdNJxKM', @submission.youtube_video_id, 'expected second call to work'
+      end
     end
     
     context 'with another video' do
@@ -72,6 +105,10 @@ class SubmissionTest < ActiveSupport::TestCase
       
       should 'return false for youtube?' do
         assert !@submission.youtube?
+      end
+      
+      should 'return none for media_type (for now)' do
+        assert_equal :none, @submission.media_type
       end
     end
   end

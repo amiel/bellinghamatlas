@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class SubmissionTest < ActiveSupport::TestCase
-  context 'a new submission' do
+  context 'a submission' do
     setup { @submission = Factory(:submission) }
     subject { @submission }
     
@@ -44,6 +44,34 @@ class SubmissionTest < ActiveSupport::TestCase
       
       should 'not append Bellingham, WA to the address' do
         assert_no_match(/Bellingham.*Bellingham,?\s+WA$/i, @submission.address)
+      end
+    end
+    
+    context 'with a youtube video' do
+      setup { @submission.update_attribute :video_url, 'http://www.youtube.com/watch?v=jv04EdNJxKM' }
+      
+      should 'return true for video?' do
+        assert @submission.video?
+      end
+      
+      should 'return true for youtube?' do
+        assert @submission.youtube?
+      end
+      
+      should 'return the youtube_video_id' do
+        assert_equal 'jv04EdNJxKM', @submission.youtube_video_id
+      end
+    end
+    
+    context 'with another video' do
+      setup { @submission.update_attribute :video_url, 'http://vimeo.com/groups/afx/videos/10173334' }
+      
+      should 'return true for video?' do
+        assert @submission.video?
+      end
+      
+      should 'return false for youtube?' do
+        assert !@submission.youtube?
       end
     end
   end

@@ -22,6 +22,21 @@ class Submission < ActiveRecord::Base
   named_scope :approved, :conditions => 'approved_at IS NOT NULL'
   named_scope :unapproved, :conditions => 'approved_at IS NULL'
 
+  def video?
+    !!video_url
+  end
+  
+  def youtube_video_id
+    @youtube_video_id = begin
+      matches = self.video_url.match(/youtube\.com\/watch.v=(\w+)/)
+      matches[1] unless matches.nil?
+    end unless defined? @youtube_video_id
+  end
+
+  def youtube?
+    !!youtube_video_id
+  end
+
   def approve!
     update_attribute :approved_at, Time.current
   end

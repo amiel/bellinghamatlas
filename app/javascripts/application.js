@@ -30,12 +30,16 @@ $(document).ready(function() {
         })();
 
 
+		var current_info_window;
+		
         function make_click_handler(marker, submission) {
             return function() {
                 // show activity indicator?
                 $.get(submission.info_window_path, function(data){
                     // Base.map.openInfoWindowHtml( marker.getPoint(), data, {} );
-					Base.map.addOverlay(new InfoWin(marker.getPoint(), data));
+					if (current_info_window) current_info_window.remove();
+					current_info_window = new InfoWin(marker.getPoint(), data);
+					Base.map.addOverlay(current_info_window);
                 });
             };
         }

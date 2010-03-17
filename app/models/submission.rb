@@ -40,20 +40,24 @@ class Submission < ActiveRecord::Base
     photo? ? :photo : youtube? ? :video : :none
   end
 
+  def reset_video_info!
+    @video_info = nil
+  end
+
+  def video_info
+    @video_info ||= VideoInfo.new video_url
+  end
+
   def video?
-    !video_url.blank?
+    video_info.valid?
   end
   
   def youtube_video_id
-    return @youtube_video_id if defined? @youtube_video_id
-    @youtube_video_id = begin
-      matches = video_url.match(/youtube\.com\/watch.v=(\w+)/) if video_url
-      matches[1] unless matches.nil?
-    end
+    video_info.video_id
   end
 
   def youtube?
-    !!youtube_video_id
+    video? && video_info.provider == 'YouTube'
   end
 
   def approve!

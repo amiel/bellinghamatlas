@@ -7,8 +7,10 @@ class SubmissionTest < ActiveSupport::TestCase
     
     should_validate_presence_of :name
     
-    should 'respond none for media_type' do
-      assert_equal :none, @submission.media_type
+    context 'with no video' do
+      should 'respond none for media_type' do
+        assert_equal :none, @submission.media_type
+      end
     end
     
     should 'geocode the address' do
@@ -94,20 +96,24 @@ class SubmissionTest < ActiveSupport::TestCase
         assert_equal 'jv04EdNJxKM', @submission.youtube_video_id, 'expceted first call to work'
         assert_equal 'jv04EdNJxKM', @submission.youtube_video_id, 'expected second call to work'
       end
+      
+      should 'have video info' do
+        assert_kind_of VideoInfo, @submission.video_info
+      end
     end
     
-    context 'with another video' do
-      setup { @submission.update_attribute :video_url, 'http://vimeo.com/groups/afx/videos/10173334' }
+    context 'with a mad video' do
+      setup { @submission.update_attribute :video_url, 'http://badurl.com/10173334' }
       
-      should 'return true for video?' do
-        assert @submission.video?
+      should 'return false for video?' do
+        assert !@submission.video?
       end
       
       should 'return false for youtube?' do
         assert !@submission.youtube?
       end
       
-      should 'return none for media_type (for now)' do
+      should 'return none for media_type' do
         assert_equal :none, @submission.media_type
       end
     end

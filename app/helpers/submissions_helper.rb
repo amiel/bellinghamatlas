@@ -24,7 +24,7 @@ module SubmissionsHelper
       dimensions = VIDEO_SIZES[size]
       case size
       when :medium_cropped : youtube_video(submission.youtube_video_id, dimensions)
-      when :thumb : youtube_thumb(submission.youtube_video_id, dimensions)
+      when :thumb : youtube_thumb(submission, dimensions)
       else ''
       end
     else
@@ -32,8 +32,8 @@ module SubmissionsHelper
     end
 	end
 	
-	def youtube_thumb video_id, dimensions
-	  image_tag "http://i.ytimg.com/vi/#{video_id}/1.jpg", dimensions.merge(:alt => 'video still')
+	def youtube_thumb submission, dimensions
+	  image_tag submission.video_info.thumbnail_small, dimensions.merge(:alt => 'video still')
 	end
 	
   def youtube_video video_id, options = {}

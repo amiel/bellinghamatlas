@@ -12,6 +12,10 @@ module SubmissionsHelper
     :medium_cropped => { :height => 163, :width => 272 },
 	}
 	
+	def icon_for submission
+    image_tag "#{submission.media_color}_marker.png", :alt => submission.media_type
+	end
+	
 	def media_for submission, size = :icon
     case submission.try :media_type
     when :photo
@@ -29,7 +33,7 @@ module SubmissionsHelper
 	end
 	
 	def youtube_thumb video_id, dimensions
-	  image_tag "http://i.ytimg.com/vi/#{video_id}/1.jpg", dimensions
+	  image_tag "http://i.ytimg.com/vi/#{video_id}/1.jpg", dimensions.merge(:alt => 'video still')
 	end
 	
   def youtube_video video_id, options = {}

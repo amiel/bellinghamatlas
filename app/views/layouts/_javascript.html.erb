@@ -3,7 +3,8 @@
 
 <% if @map then %>
   <%= GMap.header(:host => request.host_with_port) %>
-  <%= @map.to_html %>
+  <%# we don't want anymore help from YM4r anymore, go away! %>
+  <%#= @map.to_html %>
 <% end %>
 
 <% js_var :DEBUG, !Rails.env.production? %>
@@ -19,8 +20,3 @@
 	//]]>
 	</script>
 <% end %>
-
-<!--[if IE 6]>
-<%= sprockets_include_tag 'DD_belatedPNG_0.0.8a-min.js' %>
-<%= javascript_tag "DD_belatedPNG.fix('.png_fix');" %>
-<![endif]-->

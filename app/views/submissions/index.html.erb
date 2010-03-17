@@ -1,5 +1,18 @@
 
-<% map_javascripts @map %>
+<%# map_javascripts @map %>
+
+<%
+  js_var :submissions, @submissions.each_with_object({}){|s,h|
+    h[s.id] = {
+      :name => s.name,
+      :info_window_path => info_window_submission_path(s),
+      :lat => s.lat,
+      :lng => s.lng,
+      :media_type => s.media_type,
+      :media_color => s.media_color,
+    }
+  }
+%>
 
 <div id="left"></div>
 
@@ -13,7 +26,11 @@
   
 	<ul id="submissions">
 		<% for submission in @submissions %>
-		  <li><%= media_for submission %> <%= link_to_function submission.name, '' %></li>
+		  <% content_tag_for :li, submission do %>
+		    <%= icon_for submission %>
+  		  <%= media_for submission %>
+  		  <%= submission.name %>
+  		<% end %>
 		<% end %>
 	</ul>
 </div>

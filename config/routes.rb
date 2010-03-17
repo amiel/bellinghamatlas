@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   SprocketsApplication.routes(map)
-  map.resources :submissions
+  map.resources :submissions, :member => { :info_window => :get }
 
   map.namespace :cm_admin, :path_prefix => 'admin' do |admin|
     admin.resources :submissions

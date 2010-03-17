@@ -27,6 +27,15 @@ class Submission < ActiveRecord::Base
   named_scope :approved, :conditions => 'approved_at IS NOT NULL'
   named_scope :unapproved, :conditions => 'approved_at IS NULL'
 
+
+  def media_color
+    {
+      :photo => 'green',
+      :video => 'red',
+      :none => 'blue',
+    }[media_type]
+  end
+
   def media_type
     photo? ? :photo : youtube? ? :video : :none
   end

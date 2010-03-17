@@ -6,7 +6,8 @@ class Submission < ActiveRecord::Base
   validates_presence_of :name
   
   def self.featured
-    find 10
+    # find 10
+    last
   end
 
   

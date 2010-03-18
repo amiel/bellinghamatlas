@@ -5,9 +5,13 @@ class Submission < ActiveRecord::Base
   
   validates_presence_of :name
   
-  def self.featured
-    # find 10
-    last
+  named_scope :approved, :conditions => 'approved_at IS NOT NULL'
+  named_scope :unapproved, :conditions => 'approved_at IS NULL'
+  named_scope :featured, :conditions => { :featured => true }
+  named_scope :recent, :order => 'approved_at DESC'
+  
+  def self.random_featured
+    featured.first :offset => rand(featured.count)
   end
 
   
@@ -25,9 +29,6 @@ class Submission < ActiveRecord::Base
     :bucket => "bellinghamatlas-#{Rails.env}"
   }
   
-  named_scope :approved, :conditions => 'approved_at IS NOT NULL'
-  named_scope :unapproved, :conditions => 'approved_at IS NULL'
-
 
   def media_color
     {

@@ -1,5 +1,4 @@
 //= require <base>
-//= require <infowin>
 
 $(document).ready(function() {
     if (Base.submissions && GBrowserIsCompatible()) {
@@ -30,22 +29,18 @@ $(document).ready(function() {
         })();
 
 
-		var current_info_window;
 		
         function make_click_handler(marker, submission) {
             return function() {
                 // show activity indicator?
                 $.get(submission.info_window_path, function(data){
-                    // Base.map.openInfoWindowHtml( marker.getPoint(), data, {} );
-					if (current_info_window) current_info_window.remove();
-					current_info_window = new InfoWin(marker.getPoint(), data);
-					Base.map.addOverlay(current_info_window);
+                    Base.map.openInfoWindowHtml( marker.getPoint(), data, {} );
                 });
             };
         }
 
         $.each(Base.submissions, function(i, s) {
-            var marker = new GMarker(new GLatLng(s.lat, s.lng), {title: s.name, icon: icons[s.media_color] }),
+            var marker = new GMarker(new GLatLng(s.lat, s.lng), { title: s.name, icon: icons[s.media_color] }),
                 open_info_window = make_click_handler(marker, s);
             $('#submission_' + i).click(open_info_window);
             GEvent.addListener(marker, "click", open_info_window);

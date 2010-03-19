@@ -26,7 +26,7 @@ en:
     labels:
       submission:
         video_url: Video URL
-        text: "A brief description of the lovliness that is your submission, if you please."
+        text: "A brief description of the loveliness that is your submission, if you please."
         name: Your Name
         lat: Latitude
         lng: Longitude

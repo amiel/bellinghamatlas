@@ -14,20 +14,29 @@ class Submission < ActiveRecord::Base
     featured.first :offset => rand(featured.count)
   end
 
+
+  def self.paperclip_storage
+    if ENV['S3_ACCESS_KEY_ID'] and ENV['S3_SECRET_ACCESS_KEY'] then
+      {
+        :storage => :s3,
+        :s3_credentials => { :access_key_id => ENV['S3_ACCESS_KEY_ID'], :secret_access_key => ENV['S3_SECRET_ACCESS_KEY'] },
+        :path => ":attachment/:id/:style.:extension",
+        :bucket => "bellinghamatlas-#{Rails.env}"
+      }
+    else
+      {}
+    end
+  end
   
-  has_attached_file :photo, {
+  has_attached_file(:photo, {
     :default_style => :small,
     :styles => {
       :icon => '43x43#',
       :thumb => '90x67#',
       :medium_cropped => '272x163#',
       :medium => '272x163>',
-    },
-    :storage => :s3,
-    :s3_credentials => { :access_key_id => ENV['S3_ACCESS_KEY_ID'], :secret_access_key => ENV['S3_SECRET_ACCESS_KEY'] },
-    :path => ":attachment/:id/:style.:extension",
-    :bucket => "bellinghamatlas-#{Rails.env}"
-  }
+    }
+  }.merge(paperclip_storage))
   
 
   def media_color
@@ -68,9 +77,9 @@ class Submission < ActiveRecord::Base
   
   def approved=(v)
     if ActiveRecord::ConnectionAdapters::Column.value_to_boolean v
-      approve!
+      approve! unless approved?
     else
-      update_attribute :approved_at, false
+      update_attribute :approved_at, nil
     end
   end
   

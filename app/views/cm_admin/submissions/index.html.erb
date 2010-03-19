@@ -1,7 +1,24 @@
-<ul>
-
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Media Type</th>
+			<th>Approved/Featured</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	
+	<tbody>
   <% for submission in @submissions %>
-    <li><%= link_to submission.name, edit_cm_admin_submission_path(submission) %></li>
+    <tr class="<%= submission.media_type %>">
+			<td><%= link_to submission.name, cm_admin_submission_path(submission) %></td>
+			<td><span class="<%= submission.media_color %>">&bull;</span> <%= submission.media_type %></td>
+			<td><%= 'unapproved' unless submission.approved? %> <%= 'featured' if submission.featured? %></td>
+			<td>
+				<%= link_to 'show/approve', cm_admin_submission_path(submission) %> |
+				<%= link_to 'edit', edit_cm_admin_submission_path(submission) %>
+			</td>
+		</tr>
   <% end %>
-
-</ul>
+	</tbody>
+</table>

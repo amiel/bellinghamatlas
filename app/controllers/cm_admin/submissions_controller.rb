@@ -2,14 +2,18 @@ class CMAdmin::SubmissionsController < ::InheritedResources::Base
   include CMAdmin::Controller
   before_filter :require_admin
   defaults :route_prefix => 'cm_admin'
-  actions :index, :edit, :update, :destroy
+  
+  def unapproved
+    @submissions = Submission.unapproved
+    render 'index'
+  end
+  
+  def featured
+    @submissions = Submission.featured
+    render 'index'
+  end
   
   def index
-    @submissions = Submission.unapproved
+    @submissions = Submission.all :order => 'approved_at DESC'
   end
-
-  def show
-    redirect_to :action => :index
-  end
-  
 end

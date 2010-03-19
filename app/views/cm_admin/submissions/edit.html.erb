@@ -1,15 +1,4 @@
 
-
-<% semantic_form_for @submission, :url => cm_admin_submission_path(@submission) do |f| %>
-  <% f.inputs do %>
-    <%= f.input :approved, :as => :hidden, :input_html => { :value => (!@submission.approved?).to_s } %>
-  <% end %>
-
-  <% f.buttons do %>
-    <%= f.commit_button(@submission.approved? ? :unapprove : :approve) %>
-  <% end %>
-<% end %>
-
 <% semantic_form_for @submission, :url => cm_admin_submission_path(@submission), :html => { :multipart => true } do |f| %>
   <% f.inputs :title => :you do %>
     <%= f.input :name %>
@@ -36,7 +25,13 @@
   <% f.inputs :title => :text do %>
     <%= f.input :text %>
   <% end %>
-    
+  
+	<% f.inputs :title => :admin do %>
+		<%= f.input :approved, :as => :boolean %>
+		<%= f.input :featured %>
+	<% end %>
+
+  
   <%= f.buttons :commit %>
 <% end %>
 

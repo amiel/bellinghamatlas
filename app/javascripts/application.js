@@ -1,6 +1,13 @@
 //= require <base>
 
-$(document).ready(function() {
+Array.prototype.rand = function() {
+	function rand(n) { return Math.round(Math.random() * n); }
+	return this[rand(this.length)];
+};
+
+$(document).ready(function() {	
+	
+	
     if (Base.submissions && GBrowserIsCompatible()) {
         Base.map = new GMap2(document.getElementById("map"));
         
@@ -38,13 +45,19 @@ $(document).ready(function() {
                 });
             };
         }
-
+		
+		var info_window_openers = [];
         $.each(Base.submissions, function(i, s) {
             var marker = new GMarker(new GLatLng(s.lat, s.lng), { title: s.name, icon: icons[s.media_color] }),
                 open_info_window = make_click_handler(marker, s);
+			info_window_openers.push(open_info_window);
             $('#submission_' + i).click(open_info_window);
             GEvent.addListener(marker, "click", open_info_window);
             Base.map.addOverlay(marker);
         });
+
+		$('#feeling_lucky a').click(function() {
+			info_window_openers.rand()();
+		});
     }
 });

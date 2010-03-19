@@ -14,15 +14,19 @@
   }
 %>
 
-<div id="left"></div>
+<div id="left">
+	<div id="feeling_lucky"><%= link_to t(:lucky), '#' %></div>
+</div>
 
 <%= @map.div %>
 
 <div id="right">
-  <div id="featured_submission">
-    <span class="media"><%= media_for @featured_submission, :thumb %></span>
-    <%= @featured_submission.name %>
-  </div>
+	<% if @featured_submission %>
+	  <div id="featured_submission">
+	    <span class="media"><%= media_for @featured_submission, :thumb %></span>
+	    <%= @featured_submission.name %>
+	  </div>
+	<% end %>
   
 	<ul id="submissions">
 		<% for submission in @submissions %>

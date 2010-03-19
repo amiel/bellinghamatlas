@@ -29,11 +29,15 @@ td{ padding: 4px; border: 1px solid #eee; }
 	
 #main{ background: #fff; padding: 40px 0; clear: both; width: 960px; margin: 0 auto; } 
 
-.submissions table{
+.submissions table, .dashboards table{
 	tr:nth-child(odd) td{ background-color: #eee; }
-	th, td{ padding: 0.5em 1em; }
+	th, td{ padding: 0.5em 1em; border: 1px solid #ddd; }
 	
 	.green{ color: green; }
 	.red{ color: red; }
 	.blue{ color: blue; }
+}
+
+#featured_submissions, #unapproved_submissions{ .grid_12;
+	h2{ margin: 1em 0; }
 }

@@ -1,0 +1,16 @@
+
+
+
+<div id="unapproved_submissions">
+  <h2>Submissions Awaiting Approval</h2>
+  <%= render :partial => 'cm_admin/submissions/submissions', :object => Submission.unapproved, :locals => { :show_status => false } %>
+</div>
+
+
+
+
+<div id="featured_submissions">
+  <h2>Featured Submissions</h2>
+  <%= render :partial => 'cm_admin/submissions/submissions', :object => Submission.featured, :locals => { :show_status => false } %>
+</div>
+

@@ -1,7 +1,7 @@
 //= require <base>
 
 Array.prototype.rand = function() {
-	function rand(n) { return Math.round(Math.random() * n); }
+	function rand(n) { return Math.floor(Math.random() * n); }
 	return this[rand(this.length)];
 };
 

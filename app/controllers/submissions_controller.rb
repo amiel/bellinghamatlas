@@ -1,7 +1,7 @@
 class SubmissionsController < ::InheritedResources::Base
   
   before_filter :need_submissions_session, :only => [ :show, :create, :edit, :update, :new ] 
-  before_filter :require_submission_from_current_session, :only => [:show, :edit, :update]
+  before_filter :require_submission_from_current_session, :only => [:show, :edit, :update ]
   
   def index
     @submissions = Submission.recent.approved
@@ -10,6 +10,10 @@ class SubmissionsController < ::InheritedResources::Base
   end
   
   def info_window
+    @submission = Submission.approved.find params[:id]
+  end
+  
+  def large
     @submission = Submission.approved.find params[:id]
   end
   

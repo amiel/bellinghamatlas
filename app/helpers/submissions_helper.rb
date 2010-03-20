@@ -10,6 +10,7 @@ module SubmissionsHelper
     :icon =>  { :height => 43, :width => 43 },
     :thumb => { :height => 67, :width => 90 },
     :medium_cropped => { :height => 163, :width => 272 },
+    :large => { :height => 400, :width => 600 }
 	}
 	
 	def icon_for submission
@@ -23,7 +24,7 @@ module SubmissionsHelper
     when :video
       dimensions = VIDEO_SIZES[size]
       case size
-      when :medium_cropped : youtube_video(submission.youtube_video_id, dimensions)
+      when :medium_cropped, :medium, :large : youtube_video(submission.youtube_video_id, dimensions)
       when :thumb : youtube_thumb(submission, dimensions)
       else ''
       end

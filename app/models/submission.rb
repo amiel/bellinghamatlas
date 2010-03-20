@@ -35,6 +35,7 @@ class Submission < ActiveRecord::Base
       :thumb => '90x67#',
       :medium_cropped => '272x163#',
       :medium => '272x163>',
+      :large => '600x400>'
     }
   }.merge(paperclip_storage))
   

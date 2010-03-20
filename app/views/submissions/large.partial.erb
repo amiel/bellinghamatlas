@@ -1,0 +1,8 @@
+<div>
+	<%= media_for @submission, :large %>
+
+	<p>
+	  <%= image_tag @submission.gravatar_url(:size => 32) %> <%= @submission.name %>
+	  <%= @submission.text %>
+	</p>
+</div>

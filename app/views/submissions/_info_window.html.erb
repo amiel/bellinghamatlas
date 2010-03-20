@@ -1,6 +1,6 @@
 <%= media_for s, :medium_cropped %>
 
 <p>
-  <%= image_tag s.gravatar_url(:size => 16) %> <%= link_to_function s.name, "show_large(#{large_submission_path(s, :format => 'partial').to_json}, #{s.name.to_json})" %>
+  <%= image_tag s.gravatar_url(:size => 16) %> <%= link_to_function s.name, "show_large(#{large_submission_path(s, :format => 'partial').to_json}, #{s.name.to_json}, #{s.gravatar_url(:size => 16).to_json})" %>
   <%= s.text %>
 </p>

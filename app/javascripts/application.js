@@ -7,8 +7,8 @@ Array.prototype.rand = function() {
 };
 
 
-function show_large(path, title) {
-	$.fancybox({ href: path, title: title });
+function show_large(path, title, img) {
+	$.fancybox({ href: path, title: $('<span>').html($('<img/>').attr('src', img)).append(title).html() });
 }
 
 $(document).ready(function() {

@@ -22,7 +22,7 @@ $(document).ready(function() {
 		Base.map.setMapType(G_PHYSICAL_MAP);
 
 
-
+		$('#logocontroler').next().css('right', '240px');
 
 		var icons = (function(){
 			function make_icon(color) {

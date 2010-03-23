@@ -70,7 +70,8 @@
   	<div id="media_none">&nbsp;</div>
   </fieldset>
   
-  <% f.inputs :title => :text do %>
+  <% f.inputs do %>
+    <%= f.input :title %>
     <%= f.input :text %>
   <% end %>
     

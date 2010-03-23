@@ -4,6 +4,7 @@ class Submission < ActiveRecord::Base
   before_validation :geocode_address
   
   validates_presence_of :name
+  validates_presence_of :title
   
   named_scope :approved, :conditions => 'approved_at IS NOT NULL'
   named_scope :unapproved, :conditions => 'approved_at IS NULL'

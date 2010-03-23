@@ -22,9 +22,7 @@ a{ color: #069; text-decoration: none; }
 
 .container{ margin: 0 auto; width: 960px; }
 .column{ float: left; width: 10%; height: 100%; background: @background_color; }
-#left{ .column; }
-#map{ .column; width: 80%; }
-#right{ .column; }
+
 .flash{ .container; font-style: italic; color: #960; margin-bottom: 40px;  }
 
 .box{ border: 1px solid #999; padding: 5px; background: #ccc; }
@@ -82,4 +80,15 @@ form.formtastic{
 	a.current{ font-style: italic; color: #fff; background: #aaa repeat-x center center url(/images/gradient.png); text-shadow: 0 1px 0 #000; border-color: #999; }
 	.first a{ -webkit-border-top-left-radius: 3px; -webkit-border-bottom-left-radius: 3px;	-moz-border-radius-topleft: 3px;	-moz-border-radius-bottomleft: 3px;	border-top-left-radius: 3px;	border-bottom-left-radius: 3px; }
 	.last a{ border-right-width: 1px; -webkit-border-top-right-radius: 3px;	-webkit-border-bottom-right-radius: 3px;	-moz-border-radius-topright: 3px;	-moz-border-radius-bottomright: 3px;	border-top-right-radius: 3px;	border-bottom-right-radius: 3px;}
+}
+
+.map{
+	#left{ position: absolute; left: 10px; top: 180px; z-index: 5; }
+	#map{ width: 100%; top: 110px; left: 0; right: 0; }
+	#right{ position: absolute; right: 10px; top: 180px; z-index: 5; }	
+	#header{ height: 160px; margin: 0; padding: 0; position: absolute; top: 0; width: 100%; z-index: 5; }
+	#footer{ background: #fff; border-top: 1px solid #000; margin: 0; padding: 0; height: 50px; position: absolute; bottom: 0; width: 100%; overflow: hidden; }
+	#right_mountain{ background: url('/images/right_hill.png');	width: 206px; height: 149px; right: 0; position: absolute; bottom: 20px; z-index: 2; }
+	#left_mountain{ background: url('/images/left_hill.png');	width: 206px; height: 149px; left: 0; position: absolute; bottom: 20px; z-index: 2; }
+	
 }

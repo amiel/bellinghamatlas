@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title><%= render_title %></title>
+	<meta name="Description" content="<%= yield :description -%>" />
+	<meta name="Keywords" content="<%= yield :keywords -%>" />
+
+	<%= render 'layouts/unobtrusive_hack' %>
+	<%= stylesheet_link_tag '/fonts/fonts.css', 'application' %>
+
+	<!--[if IE 6]>
+	<%= stylesheet_link_tag 'ie' %>
+	<![endif]-->
+	
+	<%= yield :head %>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=7" />
+</head>
+<body class="<%= body_class %> map">
+
+	<div id="header">
+		<div class="container">
+			<h1><%= link_to t(:'site_name'), root_path %></h1>
+		</div>
+	</div>
+	
+	<%= yield %>
+
+	<div id="right_mountain"></div>
+	<div id="left_mountain"></div>
+	<div id="footer">
+	    <a href="http://www.googlefibertobellingham.com/"><strong>Bring Google Fiber to Bellingham</strong></a> | 
+	    Made by <a href="http://carnesmedia.com">Carnes Media</a> | 
+	    <a href="http://github.com/amiel/bellinghamatlas">Source Code</a>
+	</div>
+	
+	<%= render 'layouts/javascript' %>
+	<%= render 'layouts/analytics' %>
+</body>
+</html>

@@ -13,8 +13,9 @@ function show_large(path, title, img) {
 
 $(document).ready(function() {
 
-
 	if (Base.submissions && GBrowserIsCompatible()) {
+		$("#map").css("height", ($(window).height() - 160 ));
+		
 		Base.map = new GMap2(document.getElementById("map"));
 
 		Base.map.setCenter(new GLatLng(48.7597,-122.4869),13);

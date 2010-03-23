@@ -6,6 +6,10 @@ module SubmissionsHelper
   	end
 	end
 	
+	def link_to_submission_modal s, text = s.title
+    link_to_function text, "show_large(#{large_submission_path(s, :format => 'partial').to_json}, #{text.to_json}, #{s.gravatar_url(:size => 16).to_json})"
+	end
+	
 	VIDEO_SIZES = {
     :icon =>  { :height => 43, :width => 43 },
     :thumb => { :height => 67, :width => 90 },

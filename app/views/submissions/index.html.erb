@@ -21,6 +21,7 @@
 	<% if @featured_submission %>
 	  <div id="featured_submission">
 	    <span class="media"><%= media_for @featured_submission, :thumb %></span>
+	    <%= @featured_submission.title %>
 	    <%= @featured_submission.name %>
 	  </div>
 	<% end %>
@@ -29,8 +30,7 @@
 		<% for submission in @submissions %>
 		  <% content_tag_for :li, submission do %>
 		    <%= icon_for submission %>
-  		  <%= media_for submission %>
-  		  <%= submission.name %>
+  		  <%= submission.title %>
   		<% end %>
 		<% end %>
 	</ul>

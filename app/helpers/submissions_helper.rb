@@ -10,6 +10,7 @@ module SubmissionsHelper
     :icon =>  { :height => 43, :width => 43 },
     :thumb => { :height => 67, :width => 90 },
     :medium_cropped => { :height => 163, :width => 272 },
+    :medium => { :height => 163, :width => 272 },
     :large => { :height => 400, :width => 600 }
 	}
 	

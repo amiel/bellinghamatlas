@@ -7,6 +7,8 @@ class SubmissionsController < ::InheritedResources::Base
     @submissions = Submission.recent.approved
     @featured_submission = Submission.random_featured
     setup_map
+
+		render :layout => "map"
   end
   
   def info_window

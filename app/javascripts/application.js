@@ -1,5 +1,4 @@
 //= require <base>
-//= require <jquery.fancybox-1.3.1>
 
 Array.prototype.rand = function() {
 	function rand(n) { return Math.floor(Math.random() * n); }
@@ -9,21 +8,27 @@ Array.prototype.rand = function() {
 
 function show_large(path, title, img) {
 	$.fancybox({ href: path, title: $('<span>').html($('<img/>').attr('src', img)).append(title).html() });
+	// close infowindow and set it up to reopen
+	if (!Base.map.getInfoWindow().isHidden()) $(window).one('fancybox-cleanup', function() { Base.map.getInfoWindow().show(); });
+	Base.map.getInfoWindow().hide();
+	return false;
 }
 
 $(document).ready(function() {
 
 	if (Base.submissions && GBrowserIsCompatible()) {
-		$("#map").css("height", ($(window).height() - 160 ));
+		var resize_map, info_window_openers = [];
+		resize_map = function() { $("#map").css("height", ($(window).height() - 160 )); $('#logocontrol').next().css('right', '200px'); };
+		
+		resize_map(); $(window).resize(resize_map);
 		
 		Base.map = new GMap2(document.getElementById("map"));
 
 		Base.map.setCenter(new GLatLng(48.7597,-122.4869),13);
 		Base.map.addControl(new GSmallMapControl(),new GControlPosition(G_ANCHOR_TOP_LEFT,new GSize(10, 50)));
 		Base.map.setMapType(G_PHYSICAL_MAP);
-
-
-		$('#logocontroler').next().css('right', '240px');
+		// Base.map.enableContinuousZoom();
+		Base.map.enableScrollWheelZoom();
 
 		var icons = (function(){
 			function make_icon(color) {
@@ -53,7 +58,6 @@ $(document).ready(function() {
 			};
 		}
 
-		var info_window_openers = [];
 		$.each(Base.submissions, function(i, s) {
 			var marker = new GMarker(new GLatLng(s.lat, s.lng), { title: s.name, icon: icons[s.media_color] }),
 			open_info_window = make_click_handler(marker, s);
@@ -66,5 +70,11 @@ $(document).ready(function() {
 		$('#feeling_lucky a').click(function() {
 			info_window_openers.rand()();
 		});
+		
+		// I don't really know what to do about this
+		window.setTimeout(resize_map, 1000);
 	}
 });
+
+
+//= require <jquery.fancybox-1.3.1>

@@ -1,0 +1,9 @@
+<% content_for(:title) do %><%= @page.title || '' %><% end %>
+<% content_for(:keywords) do %><%= @page.keywords || '' %><% end %>
+<% content_for(:description) do %><%= @page.description || '' %><% end %>
+
+
+<div class="container">
+  <h2><%= @page.title %></h2>
+  <%= spreadhead @page %>
+</div>

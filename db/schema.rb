@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20100318165023) do
     t.datetime "updated_at"
   end
 
-  add_index "pages", ["url", "id", "published"], :name => "index_pages_on_url_and_id_and_published"
+  add_index "pages", ["id", "published", "url"], :name => "index_pages_on_url_and_id_and_published"
 
   create_table "submissions", :force => true do |t|
     t.string   "video_url"
@@ -58,6 +58,19 @@ ActiveRecord::Schema.define(:version => 20100318165023) do
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
     t.boolean  "featured"
+  end
+
+  create_table "sumbissions", :force => true do |t|
+    t.string   "video_url"
+    t.string   "name"
+    t.string   "email"
+    t.string   "address"
+    t.text     "text"
+    t.float    "lat"
+    t.float    "lng"
+    t.datetime "approved_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

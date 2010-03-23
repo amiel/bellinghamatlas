@@ -4,6 +4,7 @@ paperclip
 authlogic
 formtastic
 sprockets
+rsl-stringex
 spreadhead
 inherited_resources --version='1.0.3'
 geokit

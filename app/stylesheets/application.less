@@ -8,7 +8,7 @@
 .js .js-hide{ display: none; }
 
 
-html, body{ min-height: 100%; height: 100%; background: #f0f0f0; color: #333; font-family: Garamond, "Hoefler Text", "Times New Roman", Times, serif; text-shadow: 0 1px 0 #fff; }
+html, body{ min-height: 100%; height: 100%; overflow-x: hidden; background: #f0f0f0; color: #333; font-family: Garamond, "Hoefler Text", "Times New Roman", Times, serif; text-shadow: 0 1px 0 #fff; }
 /*#header{ height: 5%; overflow: hidden; }*/
 #main{ height: 90%; }
 #footer{ height: 5%; }
@@ -20,6 +20,10 @@ h2{ margin-bottom: 20px; font: 1.4em 'NeoRetroDrawRegular'; }
 a{ color: #069; text-decoration: none; }
 	a:hover{ color: #960; }
 
+a.button{ display: inline-block; font-family: "Helvetica Neue", Helvetica, Arial; font-size: .7em; background: #aaa repeat-x center center url(/images/gradient.png); padding: 5px 8px; border: 1px solid #888; color: #fff; text-shadow: 0 -1px 0 rgba(0,0,0,.3); outline: 0; cursor: pointer; -moz-border-radius: 5px; -webkit-border-radius: 5px; 
+		:hover{ background-color: #3a3; border-color: #292; }
+}
+
 .container{ margin: 0 auto; width: 960px; }
 .column{ float: left; width: 10%; height: 100%; background: @background_color; }
 
@@ -27,7 +31,7 @@ a{ color: #069; text-decoration: none; }
 
 .box{ border: 1px solid #999; padding: 5px; background: #ccc; }
 
-#featured_submission{ .box; position: relative; left: -180px; top: 10px; width: 240px; }
+#featured_submission{ }
 
 #header{ background: no-repeat center top url(/images/header.png); height: 150px; margin-bottom: 20px; 
 	h1{ .container; 
@@ -66,7 +70,7 @@ form.formtastic{
 	}
 	.right{ float: left; width: 339px; margin-left: 40px; padding-left: 40px; border-left: 1px dotted #ccc; }
 	.masthead{ text-align: center; margin-bottom: 40px; font-size: 1.3em; }
-}
+} 
 
 .candybar{
 	margin: 0; padding: 0; overflow: hidden; 
@@ -85,13 +89,35 @@ form.formtastic{
 	#header{ height: 160px; margin: 0; padding: 0; position: absolute; top: 0; width: 100%; z-index: 5; }
 	#left{ position: absolute; left: 10px; top: 180px; z-index: 5; }
 	#map{ width: 100%; top: 110px; left: 0; right: 0; }
-	#right{ position: absolute; right: 10px; top: 160px; z-index: 5; background: url('/images/recent_background.png'); width: 275px; height: 474px; padding: 20px; }	
+	#right{ position: absolute; right: 10px; top: 160px; z-index: 5; background: url('/images/recent_background.png'); width: 210px; height: 333px; padding: 20px; }	
 	#footer{ background: no-repeat left top url('/images/footer.png');margin: 0; padding: 35px 0 0 0; height: 30px; position: absolute; bottom: 0; width: 100%; overflow: hidden; font-size: .8em; text-align: center; }
 	#right_mountain{ background: url('/images/right_hill.png');	width: 206px; height: 149px; right: 0; position: absolute; bottom: 20px; z-index: 2; }
-	#left_mountain{ background: url('/images/left_hill.png');	width: 300px; height: 91px; left: 32px; position: absolute; bottom: 44px; z-index: 2; }
-	#goldi{ background: url('/images/Goldi.png'); width: 211px; height: 304px; position: absolute; left: 140px; bottom: 80px; z-index: 2; }
-	#the_story{ position: absolute; background: url('/images/foo.png'); left: 350px; bottom: 400px; z-index: 3;
-		.close{ cursor: pointer; }
+	#left_mountain{ background: url('/images/left_hill.png');	width: 300px; height: 91px; left: 0px; position: absolute; bottom: 20px; z-index: 2; }
+	#goldi{ background: url('/images/Goldi.png'); width: 211px; height: 304px; position: absolute; left: 100px; bottom: 41px; z-index: 2; cursor: pointer; }
+	#the_story{ position: absolute; background: url('/images/speech_bubble.png'); width: 570px; height: 200px; left: 215px; bottom: 261px; z-index: 10;
+		.close{ cursor: pointer; position: absolute; top: -12px; right: 0px; font-family: "Helvetica Neue", Helvetica, Arial; font-size: .8em; }
+		div{ margin: 20px; height: 90px; font: 1em 'NeoRetroFillRegular'; line-height: 120%; position: relative; padding-top: 10px; }
 	}
+	.buttons{ text-align: center; margin: 10px 0; }
 }
 
+
+.submission_modal{
+	overflow: hidden; width: 500px; padding: 5px;
+	.media{ width: 272px; margin-right: 20px; float: left; }
+	.info{ float: left; width: 208px; }
+	
+	h4{ font: 1.2em 'NeoRetroFillRegular'; margin-bottom: 10px; }
+	.person{ line-height: 16px; font-size: .8em; color: #333; background: no-repeat center left; padding-left: 22px; font-variant: small-caps; }
+	.text{ font-size: .85em; line-height: 125%; }
+}
+
+#submissions{
+	li{
+		padding: 5px; font-size: .85em; border-bottom: 1px dotted #ccc; cursor: pointer; 
+		span{ font-style: italic; font-size: .9em; color: #666; }
+		.person{ line-height: 16px; font-size: .9em; color: #333; background: no-repeat center left; padding-left: 22px; font-variant: small-caps; }
+		
+	}
+	li:hover{ background: #ffc; }
+}

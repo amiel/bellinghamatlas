@@ -1,8 +1,12 @@
-<%= media_for s, :medium %>
+<div class="submission_modal">
+  <div class="media">
+    <%= media_for s, :medium %>
+  </div>
 
-<p>
-  <%= image_tag s.gravatar_url(:size => 16) %>
-  <%= link_to_submission_modal s %>
-  <%= s.name %>
-  <%= s.text %>
-</p>
+  <div class="info">
+    <%# link_to_submission_modal s %>
+    <h4><%= s.title %></h4>
+    <div class="person" style="background-image: url(<%= s.gravatar_url(:size => 16) %>)"><%= s.name %></div>
+    <div class="text"><%= s.text %></div>
+  </div>
+</div>

@@ -14,30 +14,32 @@
 %>
 
 <div id="the_story" class="<%= 'js-hide' if @goldi_has_spoken %>">
-  So, goldi is cool and stuff, and she said cool stuff. That is all!
+  <div>So, goldi is cool and stuff, and she said cool stuff. That is all!
   <%= content_tag :span, 'close', :class => 'close' %>
+  </div>
 </div>
 
 <%= @map.div %>
 
 <div id="right">
-	<% if @featured_submission %>
-	  <div id="featured_submission">
-	    <span class="media"><%= media_for @featured_submission, :thumb %></span>
-	    <%= @featured_submission.title %>
-	    <%= @featured_submission.name %>
-	  </div>
-	<% end %>
-  
 	<ul id="submissions">
+	  <% if @featured_submission %>
+  	  <li id="featured_submission">
+  	    <%= media_for @featured_submission, :thumb %><br />
+  	    <h4><%= @featured_submission.title %></h4>
+        <div class="person" style="background-image: url(<%= @featured_submission.gravatar_url(:size => 16) %>)"><%= @featured_submission.name %></div>
+  	  </li>
+  	<% end %>
 		<% for submission in @submissions %>
-		  <% content_tag_for :li, submission do %>
-		    <%= icon_for submission %>
-  		  <%= submission.title %>
-  		<% end %>
+      <% content_tag_for :li, submission do %>
+	      <%= submission.title %> <span><%= submission.name %></span>
+      <% end %>
 		<% end %>
 	</ul>
-	<div id="feeling_lucky"><%= link_to t(:lucky), '#' %></div>
+	<div class="buttons">
+	  <%= link_to t(:lucky), '#', :class => "button" %>
+	  <%= link_to "Add Yours", new_submission_path, :class => "button" %>
+	</div>
 </div>
 
 

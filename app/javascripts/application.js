@@ -1,6 +1,5 @@
 //= require <base>
-//= require <konami>
-
+//= require "sea_monster"
 
 Array.prototype.rand = function() {
 	function rand(n) { return Math.floor(Math.random() * n); }
@@ -19,8 +18,8 @@ function show_large(path, title, img) {
 $(document).ready(function() {
 
 	if (Base.submissions && GBrowserIsCompatible()) {
-		var resize_map, info_window_openers = [], sea_monster_src = "/images/sea-monster-48.png", sea_monster_large_src = "/images/sea-monster-128.png";
-		resize_map = function() { $("#map").css("height", ($(window).height() - 160 )); $('#logocontrol').next().css('right', '200px'); };
+		var resize_map, info_window_openers = [];
+		resize_map = function() { $("#map").css("height", ($(window).height() - 160 )); };
 		
 		resize_map(); $(window).resize(resize_map);
 		
@@ -32,29 +31,15 @@ $(document).ready(function() {
 		// Base.map.enableContinuousZoom();
 		Base.map.enableScrollWheelZoom();
 		
+		$('#goldi').click(function() {
+			$('#the_story').fadeIn();
+		});
 		
-		var the_dude = new GGroundOverlay( sea_monster_src, new GLatLngBounds(new GLatLng(48.73151, -122.509), new GLatLng(48.732630, -122.50747)) );
-		Base.map.addOverlay(the_dude);
-		
-		Base.konami = function() {
-			if (Base.map.getZoom() != 13) return;
-			var sea_monster_img = $('img[src="'+sea_monster_src+'"]'),
-				sea_monster = sea_monster_img.parent();
-			Base.map.panTo(	new GLatLng(48.72263, -122.5075) );
-			sea_monster_img.attr('src', sea_monster_large_src);
-			sea_monster_img.animate({ width: '128px', height: '128px' }, 1500);
-			sea_monster.animate({ width: '128px', height: '128px', left: 250, top: 460 }, 1000, 'linear', function() {
-				var pos = sea_monster.offset();
-				sea_monster.appendTo('body').css(pos).css('z-index', 100).animate({ left: 160, top: $(window).height() - 460 }, 400, function() {
-					sea_monster.animate({ top: '+=50px' }, 600, function() {
-						// remove goldi's head
-						sea_monster.animate({ left: '-200px' });
-					});
-				});
-			});
-		};
-		
-		$.konami(Base.konami);
+		$('#the_story .close').click(function() {
+			$('#the_story').fadeOut();
+			return false;
+		});
+
 		
 		var icons = (function(){
 			function make_icon(color) {
@@ -95,10 +80,8 @@ $(document).ready(function() {
 
 		$('#feeling_lucky a').click(function() {
 			info_window_openers.rand()();
+			return false;
 		});
-		
-		// I don't really know what to do about this
-		window.setTimeout(resize_map, 1000);
 	}
 });
 

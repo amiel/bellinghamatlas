@@ -7,7 +7,10 @@ class SubmissionsController < ::InheritedResources::Base
     @submissions = Submission.recent.approved
     @featured_submission = Submission.random_featured
     setup_map
-
+    
+    @goldi_has_spoken = session[:goldi_has_spoken]
+    session[:goldi_has_spoken] = true
+    
 		render :layout => "map"
   end
   

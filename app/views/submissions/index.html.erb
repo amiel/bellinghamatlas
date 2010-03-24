@@ -1,4 +1,3 @@
-
 <%# map_javascripts @map %>
 
 <%
@@ -14,6 +13,10 @@
   }
 %>
 
+<div id="the_story" class="<%= 'js-hide' if @goldi_has_spoken %>">
+  So, goldi is cool and stuff, and she said cool stuff. That is all!
+  <%= content_tag :span, 'close', :class => 'close' %>
+</div>
 
 <%= @map.div %>
 

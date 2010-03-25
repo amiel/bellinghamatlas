@@ -27,12 +27,14 @@ var Base = (function(){
 	// the following section provides an abstraction to the Firebug console
 	//
 	// you may want to do something like this: <% js_var :DEBUG, !Rails.env.production? %>
+	window.setTimeout(function() {
 	if (base.DEBUG && window.console) {
 		base.console = window.console;
 	} else {
 		var f = function(){};
 		base.console = { log:f, debug:f, info:f, warn:f, error:f, assert:f, dir:f, dirxml:f, trace:f, group:f, groupEnd:f, time:f, timeEnd:f, profile:f, profileEnd:f, count:f };
 	}
+	}, 200);
 	
 	// firebugx
 	// if (!("console" in window) || !("firebug" in console)) {

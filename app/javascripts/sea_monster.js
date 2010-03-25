@@ -4,8 +4,10 @@
 	var the_dude, performed_konami;
 	Base.konami = function() {
 		if (!Base.map) return;
+		// preload images
 		
-		var sea_monster_src = "/images/sea-monster-48-bw.png", sea_monster_large_src = "/images/sea-monster-128-bw.png";
+		var sea_monster_src = "/images/sea-monster-48-bw.png", sea_monster_large_src = "/images/sea-monster-128-bw.png", goldi = '/images/headless.png', images = [new Image, new Image, new Image];
+		images[0].src = sea_monster_src; images[1].src = sea_monster_large_src; images[2].src = goldi;
 		if (typeof the_dude === 'undefined') {
 			the_dude = new GGroundOverlay( sea_monster_src, new GLatLngBounds(new GLatLng(48.73151, -122.509), new GLatLng(48.732630, -122.50747)) );
 			Base.map.addOverlay(the_dude);
@@ -27,7 +29,7 @@
 				var pos = sea_monster.offset();
 				sea_monster.appendTo('body').css(pos).css('z-index', 100).animate({ left: 160, top: $(window).height() - 460 }, 400, function() {
 					sea_monster.animate({ top: '+=50px' }, 600, function() {
-						$('#goldi').css('background-image', 'url(/images/headless.png)');
+						$('#goldi').css('background-image', 'url(' + goldi + ')');
 						sea_monster.animate({ left: '-200px' });
 					});
 				});

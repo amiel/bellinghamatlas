@@ -64,7 +64,7 @@ $(document).ready(function() {
 				$.fancybox.showActivity();
 				$.get(submission.info_window_path, function(data){
 					$.fancybox.hideActivity();
-					Base.map.openInfoWindowHtml( marker.getPoint(), data, {} );
+					Base.map.openInfoWindowHtml(marker.getPoint(), data, {});
 				});
 			};
 		}
@@ -73,6 +73,7 @@ $(document).ready(function() {
 			var marker = new GMarker(new GLatLng(s.lat, s.lng), { title: s.name, icon: icons[s.media_color] }),
 			open_info_window = make_click_handler(marker, s);
 			info_window_openers.push(open_info_window);
+			if (i == Base.featured_submission_id) $('#featured_submission').click(open_info_window);
 			$('#submission_' + i).click(open_info_window);
 			GEvent.addListener(marker, "click", open_info_window);
 			Base.map.addOverlay(marker);

@@ -7,6 +7,6 @@
     <%# link_to_submission_modal s %>
     <h4><%= s.title %></h4>
     <div class="person" style="background-image: url(<%= s.gravatar_url(:size => 16) %>)"><%= s.name %></div>
-    <div class="text"><%= s.text %></div>
+    <div class="text"><%= simple_format auto_link(s.text) %></div>
   </div>
 </div>

@@ -4,7 +4,7 @@ class SubmissionsController < ::InheritedResources::Base
   before_filter :require_submission_from_current_session, :only => [:show, :edit, :update ]
   
   def index
-    @submissions = Submission.recent.approved
+    @submissions = Submission.recent.approved.all(:limit => 8)
     @featured_submission = Submission.random_featured
     setup_map
     

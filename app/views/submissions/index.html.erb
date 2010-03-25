@@ -1,4 +1,3 @@
-<%# map_javascripts @map %>
 
 <%
   js_var :submissions, @submissions.each_with_object({}){|s,h|
@@ -13,9 +12,11 @@
   }
 %>
 
+
 <div id="the_story" class="<%= 'js-hide' if @goldi_has_spoken %>">
-  <div>So, goldi is cool and stuff, and she said cool stuff. That is all!
-  <%= content_tag :span, 'close', :class => 'close' %>
+  <div>
+    So, goldi is cool and stuff, and she said cool stuff. That is all!
+    <%= content_tag :span, 'close', :class => 'close' %>
   </div>
 </div>
 
@@ -23,7 +24,8 @@
 
 <div id="right">
 	<ul id="submissions">
-	  <% if @featured_submission %>
+	  <% if @featured_submission then %>
+  	  <% js_var :featured_submission_id, @featured_submission.id %>
   	  <li id="featured_submission">
   	    <%= media_for @featured_submission, :thumb %><br />
   	    <h4><%= @featured_submission.title %></h4>

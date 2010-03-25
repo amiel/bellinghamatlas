@@ -1,5 +1,4 @@
 //= require <base>
-//= require "sea_monster"
 
 Array.prototype.rand = function() {
 	function rand(n) { return Math.floor(Math.random() * n); }
@@ -7,21 +6,20 @@ Array.prototype.rand = function() {
 };
 
 
-function show_large(path, title, img) {
-	$.fancybox({ href: path, title: $('<span>').html($('<img/>').attr('src', img)).append(title).html() });
-	// close infowindow and set it up to reopen
-	if (!Base.map.getInfoWindow().isHidden()) $(window).one('fancybox-cleanup', function() { Base.map.getInfoWindow().show(); });
-	Base.map.getInfoWindow().hide();
-	return false;
-}
-
 $(document).ready(function() {
 
 	if (Base.submissions && GBrowserIsCompatible()) {
-		var resize_map, info_window_openers = [];
-		resize_map = function() { $("#map").css("height", ($(window).height() - 160 )); };
+		var resize_map, info_window_openers = [], loading;
 		
+		
+		resize_map = function() { $("#map").css("height", ($(window).height() - 160 )); };		
 		resize_map(); $(window).resize(resize_map);
+		loading = $('<div id="fancybox-loading"><div></div></div>');
+		$('body').append(loading);
+		
+		$('#goldi').click(function() { $('#the_story').fadeIn(); });
+		$('#the_story .close').click(function() { $('#the_story').fadeOut(); return false; });
+		
 		
 		Base.map = new GMap2(document.getElementById("map"));
 
@@ -30,16 +28,7 @@ $(document).ready(function() {
 		Base.map.setMapType(G_PHYSICAL_MAP);
 		// Base.map.enableContinuousZoom();
 		Base.map.enableScrollWheelZoom();
-		
-		$('#goldi').click(function() {
-			$('#the_story').fadeIn();
-		});
-		
-		$('#the_story .close').click(function() {
-			$('#the_story').fadeOut();
-			return false;
-		});
-
+	
 		
 		var icons = (function(){
 			function make_icon(color) {
@@ -61,9 +50,9 @@ $(document).ready(function() {
 
 		function make_click_handler(marker, submission) {
 			return function() {
-				$.fancybox.showActivity();
+				loading.show();
 				$.get(submission.info_window_path, function(data){
-					$.fancybox.hideActivity();
+					loading.hide();
 					Base.map.openInfoWindowHtml(marker.getPoint(), data, {});
 				});
 			};
@@ -85,6 +74,3 @@ $(document).ready(function() {
 		});
 	}
 });
-
-
-//= require <jquery.fancybox-1.3.1>

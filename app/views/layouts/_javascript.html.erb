@@ -1,11 +1,4 @@
 <%= include_javascript_from_cdn :jquery %>
-<%= sprockets_include_tag 'application' %>
-
-<% if @map then %>
-  <%= GMap.header(:host => request.host_with_port) %>
-  <%# we don't want anymore help from YM4r anymore, go away! %>
-  <%#= @map.to_html %>
-<% end %>
 
 <% js_var :DEBUG, !Rails.env.production? %>
 <% js_var :authenticity_token, form_authenticity_token %>

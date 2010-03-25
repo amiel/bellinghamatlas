@@ -47,7 +47,8 @@
   	
     <% if @map then %>
       <%# we don't want anymore help from YM4r anymore, go away! %>
-      <%= GMap.header(:host => request.host_with_port, :without_js => true) %>
+      <% host = Ym4r::GmPlugin::ApiKey::GMAPS_API_KEY.has_key?(request.host_with_port) ? request.host_with_port : 'bellinghamatlas.com' %>
+      <%= GMap.header(:host => host, :without_js => true) %>
       <%#= @map.to_html %>
     <% end %>
   <% end %>

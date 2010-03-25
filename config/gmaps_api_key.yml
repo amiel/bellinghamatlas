@@ -11,5 +11,6 @@ test:
 
 production:
   bhamatlas.heroku.com: "ABQIAAAAHBYCY-5zYgYgZ38Jam-5nxR9F94fbtDAFAbnOnEADR2_lqFZWRTvjErhi6bevve9xNvU5q1VDeT0Dg"
+  www.bellinghamatlas.com: "ABQIAAAAHBYCY-5zYgYgZ38Jam-5nxR4kPJlbmHCPrBK_ABJr3HB0MSE6xSS8qYKlTUhpvagY3Go3tGaqgj7pA"
   bellinghamatlas.com: "ABQIAAAAHBYCY-5zYgYgZ38Jam-5nxRQgYWTLKTeTVGHmvl_IJSAUoojgRRZsvk6mjtxsavI0UGnfAi-Gl-sFA"
   

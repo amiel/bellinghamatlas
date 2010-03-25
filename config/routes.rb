@@ -6,7 +6,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :submissions, :collection => { :featured => :get, :unapproved => :get }
   end
 
-  # map.root :controller => 'submissions' # this will be the root
-  map.root :controller => 'submissions', :action => 'new'
+  map.root :controller => 'submissions' # this will be the root
+  # map.root :controller => 'submissions', :action => 'new'
 
 end

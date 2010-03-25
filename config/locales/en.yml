@@ -21,7 +21,7 @@ en:
         update: Update My Entry
     titles:
       you: Tell us about yourself.
-      location: 'What "just right" place are you submitting, or where was this photo or video taken?'
+      location: 'What <em>just right</em> place are you submitting,<br/>or where was this photo or video taken?'
       media: Mind uploading your photo<br/>or giving us a link to your video?
     labels:
       submission:

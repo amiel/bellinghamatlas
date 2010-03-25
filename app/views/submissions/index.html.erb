@@ -16,7 +16,7 @@
 <div id="the_story" class="<%= 'js-hide' if @goldi_has_spoken %>">
   <div>
     Goldilocks traveled to the big city, 
-    but it was too big. Then she traveled to a small town, but it was too small. Then she came to Bellingham &hellip; 
+    but it was too big. Then she traveled to a small town, but it was too small. Then she came to Bellingham &hellip;
     and it was just right.
     
     <%= content_tag :span, 'close', :class => 'close' %>
@@ -42,7 +42,7 @@
 		<% end %>
 	</ul>
 	<div class="buttons">
-	  <%= link_to t(:lucky), '#', :class => "button" %>
+	  <%= link_to t(:lucky), '#', :class => "button", :id => 'feeling_lucky' %>
 	  <%= link_to "Add Yours", new_submission_path, :class => "button" %>
 	</div>
 </div>

@@ -68,7 +68,7 @@ $(document).ready(function() {
 			Base.map.addOverlay(marker);
 		});
 
-		$('#feeling_lucky a').click(function() {
+		$('#feeling_lucky').click(function() {
 			info_window_openers.rand()();
 			return false;
 		});

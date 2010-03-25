@@ -3,7 +3,7 @@
 (function() {
 	var the_dude;
 	Base.konami = function() {
-		var sea_monster_src = "/images/sea-monster-48.png", sea_monster_large_src = "/images/sea-monster-128.png";
+		var sea_monster_src = "/images/sea-monster-48-bw.png", sea_monster_large_src = "/images/sea-monster-128-bw.png";
 		if (typeof the_dude === 'undefined') {
 			the_dude = new GGroundOverlay( sea_monster_src, new GLatLngBounds(new GLatLng(48.73151, -122.509), new GLatLng(48.732630, -122.50747)) );
 			Base.map.addOverlay(the_dude);
@@ -17,9 +17,10 @@
 		sea_monster.animate({ width: '128px', height: '128px', left: 250, top: 460 }, 1000, 'linear', function() {
 			var pos = sea_monster.offset();
 			sea_monster.appendTo('body').css(pos).css('z-index', 100).animate({ left: 160, top: $(window).height() - 460 }, 400, function() {
-				sea_monster.animate({ top: '+=50px' }, 600, function() {
+				sea_monster.animate({ top: '+=50px' }, 600, fanunction() {
 					// remove goldi's head
 					sea_monster.animate({ left: '-200px' });
+					$("#goldi").addClass("nommed");
 				});
 			});
 		});

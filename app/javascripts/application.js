@@ -9,7 +9,7 @@ Array.prototype.rand = function() {
 $(document).ready(function() {
 
 	if (Base.submissions && GBrowserIsCompatible()) {
-		var resize_map, info_window_openers = [], loading;
+		var resize_map, info_window_openers = [], loading, anchor = document.location.toString().split('#')[1];
 		
 		
 		resize_map = function() { $("#map").css("height", ($(window).height() - 160 )); };		
@@ -57,17 +57,19 @@ $(document).ready(function() {
 				});
 			};
 		}
-
+		
 		$.each(Base.submissions, function(i, s) {
 			var marker = new GMarker(new GLatLng(s.lat, s.lng), { title: s.name, icon: icons[s.media_color] }),
-			open_info_window = make_click_handler(marker, s);
+				open_info_window = make_click_handler(marker, s);
 			info_window_openers.push(open_info_window);
 			if (i == Base.featured_submission_id) $('#featured_submission').click(open_info_window);
 			$('#submission_' + i).click(open_info_window);
 			GEvent.addListener(marker, "click", open_info_window);
 			Base.map.addOverlay(marker);
+			
+			if (anchor && anchor == 'submission_' + i) open_info_window();
 		});
-
+		
 		$('#feeling_lucky').click(function() {
 			info_window_openers.rand()();
 			return false;

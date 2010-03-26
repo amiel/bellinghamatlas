@@ -35,7 +35,7 @@
         <div class="person" style="background-image: url(<%= @featured_submission.gravatar_url(:size => 16) %>)"><%= @featured_submission.name %></div>
   	  </li>
   	<% end %>
-		<% for submission in @submissions %>
+		<% for submission in @submissions.all(:limit => 5) %>
       <% content_tag_for :li, submission do %>
 	      <%= submission.title %> <span><%= submission.name %></span>
       <% end %>

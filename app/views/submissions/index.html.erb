@@ -26,7 +26,7 @@
 <%= @map.div %>
 
 <div id="right">
-	<ul id="submissions">
+  <ul id="featured_submission_container">
 	  <% if @featured_submission then %>
   	  <% js_var :featured_submission_id, @featured_submission.id %>
   	  <li id="featured_submission">
@@ -35,7 +35,9 @@
         <div class="person" style="background-image: url(<%= @featured_submission.gravatar_url(:size => 16) %>)"><%= @featured_submission.name %></div>
   	  </li>
   	<% end %>
-		<% for submission in @submissions.all(:limit => 5) %>
+	</ul>
+	<ul id="submissions">
+		<% for submission in @submissions %> <%# .all(:limit => 5) %>
       <% content_tag_for :li, submission do %>
 	      <%= submission.title %> <span><%= submission.name %></span>
       <% end %>

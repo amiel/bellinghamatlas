@@ -9,7 +9,7 @@ Array.prototype.rand = function() {
 $(document).ready(function() {
 
 	if (Base.submissions && GBrowserIsCompatible()) {
-		var resize_map, info_window_openers = [], loading, anchor = document.location.toString().split('#')[1];
+		var resize_map, info_window_openers = [], loading, anchor = document.location.toString().split('#')[1], submission_prefix = 'submission_';
 		
 		
 		resize_map = function() { $("#map").css("height", ($(window).height() - 160 )); };		
@@ -51,6 +51,7 @@ $(document).ready(function() {
 		function make_click_handler(marker, submission) {
 			return function() {
 				loading.show();
+				document.location = '/#' + submission_prefix + submission.id;
 				$.get(submission.info_window_path, function(data){
 					loading.hide();
 					Base.map.openInfoWindowHtml(marker.getPoint(), data, {});
@@ -63,11 +64,11 @@ $(document).ready(function() {
 				open_info_window = make_click_handler(marker, s);
 			info_window_openers.push(open_info_window);
 			if (i == Base.featured_submission_id) $('#featured_submission').click(open_info_window);
-			$('#submission_' + i).click(open_info_window);
+			$('#' + submission_prefix + i).click(open_info_window);
 			GEvent.addListener(marker, "click", open_info_window);
 			Base.map.addOverlay(marker);
 			
-			if (anchor && anchor == 'submission_' + i) open_info_window();
+			if (anchor && anchor == submission_prefix + i) open_info_window();
 		});
 		
 		$('#feeling_lucky').click(function() {

@@ -2,6 +2,7 @@
 <%
   js_var :submissions, @submissions.each_with_object({}){|s,h|
     h[s.id] = {
+      :id => s.id,
       :name => s.name,
       :info_window_path => info_window_submission_path(s),
       :lat => s.lat,

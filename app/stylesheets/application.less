@@ -94,7 +94,6 @@ form.formtastic{
 	#right_mountain{ background: url('/images/right_hill.png');	width: 206px; height: 149px; right: 0; position: absolute; bottom: 20px; z-index: 2; }
 	#left_mountain{ background: url('/images/left_hill.png');	width: 300px; height: 91px; left: 0px; position: absolute; bottom: 20px; z-index: 2; }
 	#goldi{ background: url('/images/Goldi.png'); width: 211px; height: 304px; position: absolute; left: 100px; bottom: 41px; z-index: 2; cursor: pointer; }
-	#goldi.nommed{ background: url(/images/headless.png); }
 	#the_story{ position: absolute; background: url('/images/speech_bubble.png'); width: 570px; height: 200px; left: 215px; bottom: 261px; z-index: 10;
 		.close{ cursor: pointer; position: absolute; top: -12px; right: 0px; font-family: "Helvetica Neue", Helvetica, Arial; font-size: .8em; }
 		div{ margin: 20px; height: 90px; font: 1em 'NeoRetroFillRegular'; line-height: 120%; position: relative; padding-top: 10px; }
@@ -116,9 +115,20 @@ form.formtastic{
 #submissions, #featured_submission_container{
 	li{ padding: 5px; font-size: .85em; border-bottom: 1px dotted #ccc; cursor: pointer; 
 		span{ font-style: italic; font-size: .9em; color: #666; }
-		.person{ line-height: 16px; font-size: .9em; color: #333; background: no-repeat center left; padding-left: 22px; font-variant: small-caps; }
+	}
+	#featured_submission{ overflow: hidden; height: 75px;
+		img{ float: left; }
+		.featured_info{ margin-left: 100px;
+			*{ margin-bottom: 5px; }
+		}
+		.media_type{ font-style: italic;
+			.green{ color: green; }
+			.red{ color: red; }
+			.blue{ color: blue; }
+		}
+		.person{ line-height: 17px; font-size: .9em; color: #333; background: no-repeat center left; padding-left: 22px; font-variant: small-caps; }
 	}
 	li:hover{ background: #ffc; }
 }
 
-#submissions{ height: 230px; overflow-y: auto; }
+#submissions{ height: 257px; overflow-y: auto; }

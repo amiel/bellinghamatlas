@@ -30,9 +30,12 @@
 	  <% if @featured_submission then %>
   	  <% js_var :featured_submission_id, @featured_submission.id %>
   	  <li id="featured_submission">
-  	    <%= media_for @featured_submission, :thumb %><br />
-  	    <h4><%= @featured_submission.title %></h4>
-        <div class="person" style="background-image: url(<%= @featured_submission.gravatar_url(:size => 16) %>)"><%= @featured_submission.name %></div>
+  	    <%= media_for @featured_submission, :thumb %>
+  	    <div class="featured_info">
+    	    <h4><%= truncate @featured_submission.title, :length => 17 %></h4>
+    	    <div class="media_type"><span class="<%= @featured_submission.media_color %>">&bull;</span> <%= @featured_submission.media_type.to_s.titleize %></div>
+          <div class="person" style="background-image: url(<%= @featured_submission.gravatar_url(:size => 16) %>)"><%= truncate @featured_submission.name, :length => 12 %></div>
+        </div>
   	  </li>
   	<% end %>
 	</ul>

@@ -3,7 +3,7 @@
   js_var :submissions, @submissions.each_with_object({}){|s,h|
     h[s.id] = {
       :id => s.id,
-      :name => s.name,
+      :name => h(s.name),
       :info_window_path => info_window_submission_path(s),
       :lat => s.lat,
       :lng => s.lng,
@@ -33,9 +33,9 @@
   	  <li id="featured_submission">
   	    <%= media_for @featured_submission, :thumb %>
   	    <div class="featured_info">
-    	    <h4><%= truncate @featured_submission.title, :length => 17 %></h4>
+    	    <h4><%= truncate h(@featured_submission.title), :length => 17 %></h4>
     	    <div class="media_type"><span class="<%= @featured_submission.media_color %>">&bull;</span> <%= @featured_submission.media_type.to_s.titleize %></div>
-          <div class="person" style="background-image: url(<%= @featured_submission.gravatar_url(:size => 16) %>)"><%= truncate @featured_submission.name, :length => 12 %></div>
+          <div class="person" style="background-image: url(<%= @featured_submission.gravatar_url(:size => 16) %>)"><%= truncate h(@featured_submission.name), :length => 12 %></div>
         </div>
   	  </li>
   	<% end %>
@@ -43,7 +43,7 @@
 	<ul id="submissions">
 		<% for submission in @submissions %> <%# .all(:limit => 5) %>
       <% content_tag_for :li, submission do %>
-	      <%= submission.title %> <span><%= submission.name %></span>
+	      <%=h submission.title %> <span><%=h submission.name %></span>
       <% end %>
 		<% end %>
 	</ul>

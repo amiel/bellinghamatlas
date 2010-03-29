@@ -25,7 +25,11 @@ module SubmissionsHelper
 	def media_for submission, size = :icon
     case submission.try :media_type
     when :photo
-      image_tag submission.photo.url(size)
+      img = image_tag submission.photo.url(size)
+      case size
+      when :medium, :medium_cropped : link_to(img, submission.photo.url(:original))
+      else img
+      end
     when :video
       dimensions = VIDEO_SIZES[size]
       case size

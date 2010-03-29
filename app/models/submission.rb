@@ -96,7 +96,7 @@ class Submission < ActiveRecord::Base
 
   private
   def geocode_address
-    if self.address_changed? then
+    if self.address_changed? and !self.address.blank? then
       self.address = "#{self.address}, Bellingham, WA" unless self.address.match /Bellingham,?\s+WA/i
     
       geo = Geokit::Geocoders::MultiGeocoder.geocode(address)

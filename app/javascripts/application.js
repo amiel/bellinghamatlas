@@ -51,10 +51,10 @@ $(document).ready(function() {
 		function make_click_handler(marker, submission) {
 			return function() {
 				loading.show();
-				document.location = '/#' + submission_prefix + submission.id;
+				document.location = '#' + submission_prefix + submission.id;
 				$.get(submission.info_window_path, function(data){
 					loading.hide();
-					Base.map.openInfoWindowHtml(marker.getPoint(), data, {});
+					Base.map.openInfoWindowHtml(marker.getPoint(), data, { onCloseFn: function() { document.location = '#'; } });
 				});
 			};
 		}

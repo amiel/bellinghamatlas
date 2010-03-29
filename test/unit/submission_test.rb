@@ -24,6 +24,7 @@ class SubmissionTest < ActiveSupport::TestCase
     
     
     should 'not set address when we have lat and lng' do
+      @submission.address = '' # change the address
       @submission.save
       assert @submission.address.blank?
     end

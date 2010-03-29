@@ -14,8 +14,8 @@
 	<tbody>
   <% for submission in submissions %>
     <tr class="<%= submission.media_type %>">
-			<td><%= link_to submission.title, cm_admin_submission_path(submission) %></td>
-			<td><%= link_to submission.name, cm_admin_submission_path(submission) %></td>
+			<td><%= link_to h(submission.title), cm_admin_submission_path(submission) %></td>
+			<td><%= link_to h(submission.name), cm_admin_submission_path(submission) %></td>
 			<td><span class="<%= submission.media_color %>">&bull;</span> <%= submission.media_type %></td>
 			<% unless hide_status %>
   			<td><%= 'unapproved' unless submission.approved? %> <%= 'featured' if submission.featured? %></td>

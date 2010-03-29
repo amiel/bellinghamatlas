@@ -1,4 +1,4 @@
-<%= title @submission.title %>
+<%= title h(@submission.title) %>
 <%= link_to 'Edit', edit_cm_admin_submission_path(@submission) %>
 
 <% div_for @submission do %>
@@ -18,7 +18,7 @@
 		<%= media_for @submission, :large %>
 	</div>
 
-  <p><%= @submission.name %></p>
-	<p><%= @submission.address %></p>
-	<p><%= @submission.text %></p>
+  <p><%=h @submission.name %></p>
+	<p><%=h @submission.address %></p>
+	<p><%=h @submission.text %></p>
 <% end %>

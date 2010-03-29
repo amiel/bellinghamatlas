@@ -5,12 +5,12 @@ Array.prototype.rand = function() {
 	return this[rand(this.length)];
 };
 
-
 $(document).ready(function() {
 
 	if (Base.submissions && GBrowserIsCompatible()) {
 		var resize_map, info_window_openers = [], loading, anchor = document.location.toString().split('#')[1], submission_prefix = 'submission_';
 		
+		Base.set_anchor = function(l) { document.location = '#' + l; };
 		
 		resize_map = function() { $("#map").css("height", ($(window).height() - 160 )); };		
 		resize_map(); $(window).resize(resize_map);
@@ -51,10 +51,10 @@ $(document).ready(function() {
 		function make_click_handler(marker, submission) {
 			return function() {
 				loading.show();
-				document.location = '#' + submission_prefix + submission.id;
+				Base.set_anchor(submission_prefix + submission.id);
 				$.get(submission.info_window_path, function(data){
 					loading.hide();
-					Base.map.openInfoWindowHtml(marker.getPoint(), data, { onCloseFn: function() { document.location = '#'; } });
+					Base.map.openInfoWindowHtml(marker.getPoint(), data, { onCloseFn: function() { Base.set_anchor(''); } });
 				});
 			};
 		}

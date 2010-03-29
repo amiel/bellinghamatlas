@@ -4,7 +4,7 @@
 	var the_dude;
 	Base.konami = function() {
 		if (!Base.map) return;
-		
+		Base.set_anchor('konami');
 		var sea_monster_src = "/images/sea-monster-48-bw.png", sea_monster_large_src = "/images/sea-monster-128-bw.png", goldi = '/images/headless.png', images = [new Image, new Image, new Image];
 		// preload images
 		images[0].src = sea_monster_src; images[1].src = sea_monster_large_src; images[2].src = goldi;
@@ -14,8 +14,8 @@
 			Base.map.addOverlay(the_dude);
 		}
 		
-		if (Base.map.getZoom() != 13) {
-			alert('konami code must be performed at zoom level 13, please try again');
+		if (Base.map.getZoom() > 13) {
+			alert('konami code cannot be performed at this zoom level, please try again');
 			Base.map.setZoom(13);
 			return;
 		}

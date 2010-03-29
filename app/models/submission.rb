@@ -11,6 +11,10 @@ class Submission < ActiveRecord::Base
   named_scope :featured, :conditions => { :featured => true }
   named_scope :recent, :order => 'approved_at DESC'
   
+  validates_presence_of :address, :if => proc{|s| s.lat.blank? or s.lng.blank? }
+  validates_presence_of :lat, :if => proc{|s| s.address.blank? }
+  validates_presence_of :lng, :if => proc{|s| s.address.blank? }
+  
   def self.random_featured
     featured.first :offset => rand(featured.count)
   end

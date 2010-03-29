@@ -13,6 +13,21 @@ class SubmissionTest < ActiveSupport::TestCase
       end
     end
     
+    should 'validate presense of address with absense of lat and lng' do
+      @submission.lat = ''
+      @submission.lng = ''
+      assert !@submission.save, 'expected submission not to save'
+      assert @submission.errors.on(:address), 'expected an error on address'
+      assert @submission.errors.on(:lat), 'expected an error on lat'
+      assert @submission.errors.on(:lng), 'expected an error on lng'
+    end
+    
+    
+    should 'not set address when we have lat and lng' do
+      @submission.save
+      assert @submission.address.blank?
+    end
+    
     should 'geocode the address' do
       @submission.address = '104 State st'
       assert @submission.save, 'expected save'
@@ -102,7 +117,7 @@ class SubmissionTest < ActiveSupport::TestCase
       end
     end
     
-    context 'with a mad video' do
+    context 'with a bad video' do
       setup { @submission.update_attribute :video_url, 'http://badurl.com/10173334' }
       
       should 'return false for video?' do

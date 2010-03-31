@@ -51,8 +51,8 @@ $(document).ready(function() {
 		function make_click_handler(marker, submission) {
 			return function() {
 				loading.show();
-				Base.set_anchor(submission_prefix + submission.id);
 				$.get(submission.info_window_path, function(data){
+    				Base.set_anchor(submission_prefix + submission.id);
 					loading.hide();
 					Base.map.openInfoWindowHtml(marker.getPoint(), data, { onCloseFn: function() { Base.set_anchor(''); } });
 				});

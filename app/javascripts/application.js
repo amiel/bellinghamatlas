@@ -52,9 +52,11 @@ $(document).ready(function() {
 			return function() {
 				loading.show();
 				$.get(submission.info_window_path, function(data){
-    				Base.set_anchor(submission_prefix + submission.id);
 					loading.hide();
-					Base.map.openInfoWindowHtml(marker.getPoint(), data, { onCloseFn: function() { Base.set_anchor(''); } });
+					Base.map.openInfoWindowHtml(marker.getPoint(), data, {
+					    onCloseFn: function() { Base.set_anchor(''); },
+					    onOpenFn: function() { Base.set_anchor(submission_prefix + submission.id); }
+					});
 				});
 			};
 		}

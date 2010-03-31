@@ -33,7 +33,7 @@
   	  <li id="featured_submission">
   	    <%= media_for @featured_submission, :thumb %>
   	    <div class="featured_info">
-    	    <h4><%= truncate h(@featured_submission.title), :length => 17 %></h4>
+    	    <h4><%= truncate h(@featured_submission.title), :length => 16 %></h4>
     	    <div class="media_type"><span class="<%= @featured_submission.media_color %>">&bull;</span> <%= @featured_submission.media_type.to_s.titleize %></div>
           <div class="person" style="background-image: url(<%= @featured_submission.gravatar_url(:size => 16) %>)"><%= truncate h(@featured_submission.name), :length => 12 %></div>
         </div>

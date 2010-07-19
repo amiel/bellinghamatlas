@@ -77,30 +77,20 @@ $(document).ready(function() {
 			info_window_openers.rand()();
 			return false;
 		});
-        // 
-        // $('#black_rock').click(function() {
-        //     var geoXml;
-        // 
-        //     function zoomToGeoXML(geoXml) {
-        //         console.log(geoXml);
-        //         var center = geoXml.getDefaultCenter();
-        //         console.log(center);
-        //         var span = geoXml.getDefaultSpan();
-        //         var sw = new GLatLng(center.lat() - span.lat() / 2,
-        //         center.lng() - span.lng() / 2);
-        //         var ne = new GLatLng(center.lat() + span.lat() / 2,
-        //         center.lng() + span.lng() / 2);
-        //         var bounds = new GLatLngBounds(sw, ne);
-        //         Base.map.setCenter(center);
-        //         Base.map.setZoom(Base.map.getBoundsZoomLevel(bounds));
-        //         Base.map.addOverlay(geoXml);
-        //     }
-        //     
-        //     geoXml = new GGeoXml("http://localhost:3000/BlackRockFiber20100716.kmz", function() {
-        //         zoomToGeoXML(geoXml); // centering the map according to the kml data
-        //     });
-        //     return false;
-        // });
+        
+        var existing_fiber;
+        $('#existing_fiber').click(function() {
+            if (existing_fiber) {
+                Base.map.removeOverlay(existing_fiber);
+                existing_fiber = null;
+                $('#existing_fiber').text("Show Existing Fiber");
+            } else {
+                existing_fiber = new GGeoXml("http://bellinghamatlas.com/BlackRockFiber20100716.kmz", function(){});
+                Base.map.addOverlay(existing_fiber);
+                $('#existing_fiber').text("Hide Existing Fiber");
+            }
+            return false;
+        });
 
 
 	}
